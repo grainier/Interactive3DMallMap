@@ -7,105 +7,171 @@ var building = {
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
+        },
+        {
             id: "floor_id", // we ignore this for now just go with Level X
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
+        },
+        {
             id: "floor_id", // we ignore this for now just go with Level X
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
+        },
+        {
             id: "floor_id", // we ignore this for now just go with Level X
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
+        },
+        {
             id: "floor_id", // we ignore this for now just go with Level X
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
+        },
+        {
             id: "floor_id", // we ignore this for now just go with Level X
             title: "", // do we really need this ???
             svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
             + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
+            + '<path data-type="outline" data-item="" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
+            + '<rect data-type="floor" data-item="" id="floor" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
+            + '<rect data-type="room" data-item="" id="room_1" data-space="4.01" height="341.4" width="730.38" y="27.009" x="24.108"/>'
+            + '<rect data-type="appliance" data-item="" id="room_2" data-space="4.02" height="440" width="160" y="301.49" x="838.39"/>'
+            + '<rect data-type="lake" data-item="" id="room_3" data-space="4.03" height="262" width="262" y="480.19" x="21.306"/>'
+            + '<rect data-type="appliance" data-item="dryer" id="room_4" data-space="4.04" height="262" width="262" y="480.34" x="297.57"/>'
+            + '<path data-type="tree" data-item="" id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
             + '</svg>'
-        }, {
-            id: "floor_id", // we ignore this for now just go with Level X
-            title: "", // do we really need this ???
-            svg: '<svg class="map map--5" viewBox="0 0 1200 800" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
-            + '<title>Map Level 1</title>'
-            + '<path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>'
-            + '<rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>'
-            + '<rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>'
-            + '<rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>'
-            + '<rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>'
-            + '<rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>'
-            + '<path id="tree" class="map__tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>'
-            + '</svg>'
-        }
+        },
     ]
 };
 
 
-$(function(){
-
+$(function () {
     $.get('templates/level.html', function (data) {
-        var template = Handlebars.compile(data);
-        for (var i = 0; i < building.floors.length; i++) {
-            $('.levels').append(template(building.floors[i]));
+        var template = Handlebars.compile(data),
+            svg, type, item, appliance, pins = [], l, i;
+        for (i = 0; i < building.floors.length; i++) {
+            pins.length=0;
+            l = i + 1;
+            svg = $(building.floors[i].svg);
+            $(svg).children().each(function (j) {
+                var k = j + 1;
+                type = $(this).attr("data-type");
+                if (type !== undefined && type !== null) {
+                    switch (type) {
+                        case 'appliance':
+                        {
+                            $(this).addClass('map__hidden');
+                            item = $(this).attr("data-item");
+                            appliance = $(this).attr("id");
+                            if (item !== undefined && item !== null && item.length > 0
+                                && appliance !== undefined && appliance !== null && appliance.length > 0) {
+                                // TODO : create pin from template, add it, apply css
+                                pins.push({
+                                    appliance: appliance,
+                                    level: l,
+                                    marker: k,
+                                    type: type,
+                                    space: "4.01",          // TODO
+                                    label: "Some Lable",    // TODO
+                                    icon: "#icon-tomato"    // TODO
+                                });
+                            }
+                            break;
+                        }
+                        case 'room':
+                        {
+                            $(this).addClass('map__space');
+                            appliance = $(this).attr("id"); // this is the room id
+                            if (item !== undefined && item !== null && item.length > 0
+                                && appliance !== undefined && appliance !== null && appliance.length > 0) {
+                                // TODO : create pin from template, add it, apply css
+                                pins.push({
+                                    appliance: appliance,
+                                    level: l,
+                                    marker: k,
+                                    type: type,
+                                    space: "4.01",          // TODO
+                                    label: "Some Lable",    // TODO
+                                    icon: "#icon-cinema"    // TODO
+                                });
+                            }
+                            break;
+                        }
+                        case 'floor':
+                        {
+                            $(this).addClass('map__ground');
+                            break;
+                        }
+                        case 'outline':
+                        {
+                            $(this).addClass('map__outline');
+                            break;
+                        }
+                        case 'tree':
+                        {
+                            $(this).addClass('map__tree');
+                            break;
+                        }
+                        case 'lake':
+                        {
+                            $(this).addClass('map__lake');
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                }
+            });
+            $('.levels').append(template({
+                svg: $("<div />").append($(svg).clone()).html(),
+                pins: pins
+            }));
         }
-        $('.levels').hide().show(0); // refresh dom
         var floors = $(".level");
         for (var i = 0; i < floors.length; i++) {
             var l = i + 1;
@@ -114,21 +180,22 @@ $(function(){
             if (l > 1) {
                 var h = i * (60 / floors.length);
                 css.addRule(l_selector, "-webkit-transform: translateZ(" + h + "vmin); transform: translateZ(" + h + "vmin);");
-                for(var j=i; j > 0; j--) {
-                    css.addRule(".levels--selected-"+l+" .level--"+j, "-webkit-transform: translateZ(-60vmin); transform: translateZ(-60vmin);")
-                }
+                /* for (var j = i; j > 0; j--) {
+                    css.addRule(".levels--selected-" + l + " .level--" + j, "-webkit-transform: translateZ(-60vmin); transform: translateZ(-60vmin);")
+                }*/
             }
             css.addRule(l_selector + "::after", "content: 'L" + l + "';");
-            css.addRule(".levels--selected-" + l + " .level:not(.level--" + l + ")", "opacity: 0;"); /* fade out all others */
-            css.addRule(".levels--selected-" + l, "-webkit-transition-delay: 0.25s; transition-delay: 0.25s;"); /* Delays */
+            css.addRule(".levels--selected-" + l + " .level:not(.level--" + l + ")", "opacity: 0;");
+            css.addRule(".levels--selected-" + l, "-webkit-transition-delay: 0.25s; transition-delay: 0.25s;");
+            css.addRule(".levels", "-webkit-transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);");
+            css.addRule(".level.level--current", "-webkit-transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);;transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);");
             $(floors[i]).addClass(css_class);
             $(floors[i]).attr("aria-label", "Level " + l);
             $(floors[i]).attr("data-level", l);
+            $(".levels").show(0.15);
         }
 
-        /// -------------------------
-
-        ;(function(window) {
+        (function (window) {
 
             'use strict';
 
@@ -138,7 +205,6 @@ $(function(){
                 var styles = window.getComputedStyle(document.documentElement, ''),
                     pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1],
                     dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
-
                 return {
                     dom: dom,
                     lowercase: pre,
@@ -148,19 +214,27 @@ $(function(){
             })();
 
             // vars & stuff
-            var support = {transitions : Modernizr.csstransitions},
-                transEndEventNames = {'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd', 'msTransition': 'MSTransitionEnd', 'transition': 'transitionend'},
+            var support = {transitions: Modernizr.csstransitions},
+                transEndEventNames = {
+                    'WebkitTransition': 'webkitTransitionEnd',
+                    'MozTransition': 'transitionend',
+                    'OTransition': 'oTransitionEnd',
+                    'msTransition': 'MSTransitionEnd',
+                    'transition': 'transitionend'
+                },
                 transEndEventName = transEndEventNames[Modernizr.prefixed('transition')],
-                onEndTransition = function(el, callback, propTest) {
-                    var onEndCallbackFn = function( ev ) {
-                        if( support.transitions ) {
-                            if( ev.target != this || propTest && ev.propertyName !== propTest && ev.propertyName !== prefix.css + propTest ) return;
-                            this.removeEventListener( transEndEventName, onEndCallbackFn );
+                onEndTransition = function (el, callback, propTest) {
+                    var onEndCallbackFn = function (ev) {
+                        if (support.transitions) {
+                            if (ev.target != this || propTest && ev.propertyName !== propTest && ev.propertyName !== prefix.css + propTest) return;
+                            this.removeEventListener(transEndEventName, onEndCallbackFn);
                         }
-                        if( callback && typeof callback === 'function' ) { callback.call(this); }
+                        if (callback && typeof callback === 'function') {
+                            callback.call(this);
+                        }
                     };
-                    if( support.transitions ) {
-                        el.addEventListener( transEndEventName, onEndCallbackFn );
+                    if (support.transitions) {
+                        el.addEventListener(transEndEventName, onEndCallbackFn);
                     }
                     else {
                         onEndCallbackFn();
@@ -208,7 +282,7 @@ $(function(){
             // sort by ctrls
                 sortByNameCtrl = document.querySelector('#sort-by-name'),
             // listjs initiliazation (all mall´s spaces)
-                spacesList = new List('spaces-list', { valueNames: ['list__link', { data: ['level'] }, { data: ['category'] } ]} ),
+                spacesList = new List('spaces-list', {valueNames: ['list__link', {data: ['level']}, {data: ['category']}]}),
 
             // smaller screens:
             // open search ctrl
@@ -228,25 +302,29 @@ $(function(){
              */
             function initEvents() {
                 // click on a Mall´s level
-                $( ".levels" ).on( "click", ".level", function() {
+                $(".levels").on("click", ".level", function () {
                     // shows this level
                     var level = $(this).attr("data-level");
                     showLevel(level);
                 });
 
                 // click on the show mall´s levels ctrl
-                allLevelsCtrl.addEventListener('click', function() {
+                allLevelsCtrl.addEventListener('click', function () {
                     // shows all levels
                     showAllLevels();
                 });
 
                 // navigating through the levels
-                levelUpCtrl.addEventListener('click', function() { navigate('Down'); });
-                levelDownCtrl.addEventListener('click', function() { navigate('Up'); });
+                levelUpCtrl.addEventListener('click', function () {
+                    navigate('Down');
+                });
+                levelDownCtrl.addEventListener('click', function () {
+                    navigate('Up');
+                });
 
                 // sort by name ctrl - add/remove category name (css pseudo element) from list and sorts the spaces by name
-                sortByNameCtrl.addEventListener('click', function() {
-                    if( this.checked ) {
+                sortByNameCtrl.addEventListener('click', function () {
+                    if (this.checked) {
                         classie.remove(spacesEl, 'grouped-by-category');
                         spacesList.sort('list__link');
                     }
@@ -257,20 +335,20 @@ $(function(){
                 });
 
                 // hovering a pin / clicking a pin
-                pins.forEach(function(pin) {
+                pins.forEach(function (pin) {
                     var contentItem = contentEl.querySelector('.content__item[data-space="' + pin.getAttribute('data-space') + '"]');
 
-                    pin.addEventListener('mouseenter', function() {
-                        if( !isOpenContentArea ) {
+                    pin.addEventListener('mouseenter', function () {
+                        if (!isOpenContentArea) {
                             classie.add(contentItem, 'content__item--hover');
                         }
                     });
-                    pin.addEventListener('mouseleave', function() {
-                        if( !isOpenContentArea ) {
+                    pin.addEventListener('mouseleave', function () {
+                        if (!isOpenContentArea) {
                             classie.remove(contentItem, 'content__item--hover');
                         }
                     });
-                    pin.addEventListener('click', function(ev) {
+                    pin.addEventListener('click', function (ev) {
                         ev.preventDefault();
                         // open content for this pin
                         openContent(pin.getAttribute('data-space'));
@@ -280,17 +358,17 @@ $(function(){
                 });
 
                 // closing the content area
-                contentCloseCtrl.addEventListener('click', function() {
+                contentCloseCtrl.addEventListener('click', function () {
                     closeContentArea();
                 });
 
                 // clicking on a listed space: open level - shows space
-                spaces.forEach(function(space) {
+                spaces.forEach(function (space) {
                     var spaceItem = space.parentNode,
                         level = spaceItem.getAttribute('data-level'),
                         spacerefval = spaceItem.getAttribute('data-space');
 
-                    space.addEventListener('click', function(ev) {
+                    space.addEventListener('click', function (ev) {
                         ev.preventDefault();
                         // for smaller screens: close search bar
                         closeSearch();
@@ -302,12 +380,12 @@ $(function(){
                 });
 
                 // smaller screens: open the search bar
-                openSearchCtrl.addEventListener('click', function() {
+                openSearchCtrl.addEventListener('click', function () {
                     openSearch();
                 });
 
                 // smaller screens: close the search bar
-                closeSearchCtrl.addEventListener('click', function() {
+                closeSearchCtrl.addEventListener('click', function () {
                     closeSearch();
                 });
             }
@@ -316,7 +394,7 @@ $(function(){
              * Opens a level. The current level moves to the center while the other ones move away.
              */
             function showLevel(level) {
-                if( isExpanded ) {
+                if (isExpanded) {
                     return false;
                 }
 
@@ -332,7 +410,7 @@ $(function(){
                 var levelEl = mallLevels[selectedLevel - 1];
                 classie.add(levelEl, 'level--current');
 
-                onEndTransition(levelEl, function() {
+                onEndTransition(levelEl, function () {
                     classie.add(mallLevelsEl, 'levels--open');
 
                     // show level pins
@@ -355,7 +433,7 @@ $(function(){
              * Shows all Mall´s levels
              */
             function showAllLevels() {
-                if( isNavigating || !isExpanded ) {
+                if (isNavigating || !isExpanded) {
                     return false;
                 }
                 isExpanded = false;
@@ -377,7 +455,7 @@ $(function(){
                 spacesList.filter();
 
                 // close content area if it is open
-                if( isOpenContentArea ) {
+                if (isOpenContentArea) {
                     closeContentArea();
                 }
             }
@@ -386,7 +464,7 @@ $(function(){
              * Shows all spaces for current level
              */
             function showLevelSpaces() {
-                spacesList.filter(function(item) {
+                spacesList.filter(function (item) {
                     return item.values().level === selectedLevel.toString();
                 });
             }
@@ -397,6 +475,38 @@ $(function(){
             function showPins(levelEl) {
                 var levelEl = levelEl || mallLevels[selectedLevel - 1];
                 classie.add(levelEl.querySelector('.level__pins'), 'level__pins--active');
+
+                css.addRule(".levels", "-webkit-transform:'';transform:''");
+                css.addRule(".level.level--current", "-webkit-transform:'';transform:''");
+                $('.levels').hide().show(0);
+
+                var level, marker, appliance_id;
+                $(levelEl).find(".pin").each(function () {
+                    level = $(this).attr("data-level");
+                    marker = $(this).attr("data-marker");
+                    appliance_id = $(this).attr("data-appliance");
+
+
+
+                    var parent_rect = $("#"+appliance_id).parent("svg")[0].getBoundingClientRect();
+                    var rect = $("#"+appliance_id)[0].getBoundingClientRect();
+
+
+
+                    var center = {
+                        x: (rect.left - parent_rect.left) + (rect.width / 2),
+                        y: (rect.top - parent_rect.top) + (rect.height / 2)
+                    };
+                    var pin_class = "pin--" + level + "-" + marker,
+                        pin_selector = "." + pin_class;
+
+                    css.addRule(pin_selector, "left: "+center.x+"px;top: "+center.y+"px;");
+                    $(this).addClass(pin_class);
+                });
+
+                css.addRule(".levels", "-webkit-transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);");
+                css.addRule(".level.level--current", "-webkit-transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);;transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);");
+                $('.levels').hide().show(0);
             }
 
             /**
@@ -425,7 +535,7 @@ $(function(){
              * Show the surroundings level
              */
             function showSurroundings() {
-                mallSurroundings.forEach(function(el) {
+                mallSurroundings.forEach(function (el) {
                     classie.remove(el, 'surroundings--hidden');
                 });
             }
@@ -434,7 +544,7 @@ $(function(){
              * Hide the surroundings level
              */
             function hideSurroundings() {
-                mallSurroundings.forEach(function(el) {
+                mallSurroundings.forEach(function (el) {
                     classie.add(el, 'surroundings--hidden');
                 });
             }
@@ -443,7 +553,7 @@ $(function(){
              * Navigate through the mall´s levels
              */
             function navigate(direction) {
-                if( isNavigating || !isExpanded || isOpenContentArea ) {
+                if (isNavigating || !isExpanded || isOpenContentArea) {
                     return false;
                 }
                 isNavigating = true;
@@ -451,12 +561,12 @@ $(function(){
                 var prevSelectedLevel = selectedLevel;
 
                 // current level
-                var currentLevel = mallLevels[prevSelectedLevel-1];
+                var currentLevel = mallLevels[prevSelectedLevel - 1];
 
-                if( direction === 'Up' && prevSelectedLevel > 1 ) {
+                if (direction === 'Up' && prevSelectedLevel > 1) {
                     --selectedLevel;
                 }
-                else if( direction === 'Down' && prevSelectedLevel < mallLevelsTotal ) {
+                else if (direction === 'Down' && prevSelectedLevel < mallLevelsTotal) {
                     ++selectedLevel;
                 }
                 else {
@@ -469,15 +579,17 @@ $(function(){
                 // transition direction class
                 classie.add(currentLevel, 'level--moveOut' + direction);
                 // next level element
-                var nextLevel = mallLevels[selectedLevel-1]
+                var nextLevel = mallLevels[selectedLevel - 1];
                 // ..becomes the current one
                 classie.add(nextLevel, 'level--current');
 
                 // when the transition ends..
-                onEndTransition(currentLevel, function() {
+                onEndTransition(currentLevel, function () {
                     classie.remove(currentLevel, 'level--moveOut' + direction);
                     // solves rendering bug for the SVG opacity-fill property
-                    setTimeout(function() {classie.remove(currentLevel, 'level--current');}, 60);
+                    setTimeout(function () {
+                        classie.remove(currentLevel, 'level--current');
+                    }, 60);
 
                     classie.remove(mallLevelsEl, 'levels--selected-' + prevSelectedLevel);
                     classie.add(mallLevelsEl, 'levels--selected-' + selectedLevel);
@@ -499,14 +611,14 @@ $(function(){
              * Control navigation ctrls state. Add disable class to the respective ctrl when the current level is either the first or the last.
              */
             function setNavigationState() {
-                if( selectedLevel == 1 ) {
+                if (selectedLevel == 1) {
                     classie.add(levelDownCtrl, 'boxbutton--disabled');
                 }
                 else {
                     classie.remove(levelDownCtrl, 'boxbutton--disabled');
                 }
 
-                if( selectedLevel == mallLevelsTotal ) {
+                if (selectedLevel == mallLevelsTotal) {
                     classie.add(levelUpCtrl, 'boxbutton--disabled');
                 }
                 else {
@@ -519,7 +631,7 @@ $(function(){
              */
             function openContent(spacerefval) {
                 // if one already shown:
-                if( isOpenContentArea ) {
+                if (isOpenContentArea) {
                     hideSpace();
                     spaceref = spacerefval;
                     showSpace();
@@ -531,18 +643,18 @@ $(function(){
 
                 // remove class active (if any) from current list item
                 var activeItem = spacesEl.querySelector('li.list__item--active');
-                if( activeItem ) {
+                if (activeItem) {
                     classie.remove(activeItem, 'list__item--active');
                 }
                 // list item gets class active (if the list item is currently shown in the list)
-                var listItem = spacesEl.querySelector('li[data-space="' + spacerefval + '"]')
-                if( listItem ) {
+                var listItem = spacesEl.querySelector('li[data-space="' + spacerefval + '"]');
+                if (listItem) {
                     classie.add(listItem, 'list__item--active');
                 }
 
                 // remove class selected (if any) from current space
                 var activeSpaceArea = mallLevels[selectedLevel - 1].querySelector('svg > .map__space--selected');
-                if( activeSpaceArea ) {
+                if (activeSpaceArea) {
                     classie.remove(activeSpaceArea, 'map__space--selected');
                 }
                 // svg area gets selected
@@ -573,8 +685,8 @@ $(function(){
                 var contentItem = contentEl.querySelector('.content__item[data-space="' + spaceref + '"]');
                 // show content
                 classie.add(contentItem, 'content__item--current');
-                if( sliding ) {
-                    onEndTransition(contentItem, function() {
+                if (sliding) {
+                    onEndTransition(contentItem, function () {
                         classie.add(contentEl, 'content--open');
                     });
                 }
@@ -594,7 +706,7 @@ $(function(){
                 // resize mall area
                 classie.remove(mall, 'mall--content-open');
                 // enable mall nav ctrls
-                if( isExpanded ) {
+                if (isExpanded) {
                     setNavigationState();
                 }
                 isOpenContentArea = false;
@@ -612,12 +724,12 @@ $(function(){
                 classie.remove(mallLevelsEl.querySelector('.pin[data-space="' + spaceref + '"]'), 'pin--active');
                 // remove class active (if any) from current list item
                 var activeItem = spacesEl.querySelector('li.list__item--active');
-                if( activeItem ) {
+                if (activeItem) {
                     classie.remove(activeItem, 'list__item--active');
                 }
                 // remove class selected (if any) from current space
                 var activeSpaceArea = mallLevels[selectedLevel - 1].querySelector('svg > .map__space--selected');
-                if( activeSpaceArea ) {
+                if (activeSpaceArea) {
                     classie.remove(activeSpaceArea, 'map__space--selected');
                 }
             }

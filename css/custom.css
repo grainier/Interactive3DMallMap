@@ -1,0 +1,7 @@
+.pin[data-type='appliance'] .icon--pin {
+    fill: #8d65e0;
+}
+
+.pin[data-type='room'] .icon--pin {
+    fill: #dc4b7c;
+}

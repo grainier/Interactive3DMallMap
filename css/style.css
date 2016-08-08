@@ -704,14 +704,12 @@ button:focus {
 
 .icon--logo {
     position: absolute;
-    top: 11%;
+    top: 15%;
     left: 25%;
     width: 50%;
-    height: 50%;
-    fill: white;
-    fill-opacity: 0.6;
-    -webkit-transition: fill-opacity 0.3s;
-    transition: fill-opacity 0.3s;
+    height: auto;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
 .pin--active .icon--logo,

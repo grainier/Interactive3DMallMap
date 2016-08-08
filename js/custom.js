@@ -99,7 +99,10 @@ $(function () {
             l = i + 1;
             svg = $(building.floors[i].svg);
             $(svg).children().each(function (j) {
-                var k = j + 1;
+                var k = j + 1,
+                    type = undefined,
+                    appliance = undefined,
+                    item = undefined;
                 type = $(this).attr("data-type");
                 if (type !== undefined && type !== null) {
                     switch (type) {
@@ -118,7 +121,7 @@ $(function () {
                                     type: type,
                                     space: "4.01",          // TODO
                                     label: "Some Lable",    // TODO
-                                    icon: "#icon-tomato"    // TODO
+                                    icon: "img/icons/tv.png"    // TODO
                                 });
                             }
                             break;
@@ -127,8 +130,7 @@ $(function () {
                         {
                             $(this).addClass('map__space');
                             appliance = $(this).attr("id"); // this is the room id
-                            if (item !== undefined && item !== null && item.length > 0
-                                && appliance !== undefined && appliance !== null && appliance.length > 0) {
+                            if (appliance !== undefined && appliance !== null && appliance.length > 0) {
                                 // TODO : create pin from template, add it, apply css
                                 pins.push({
                                     appliance: appliance,
@@ -137,7 +139,7 @@ $(function () {
                                     type: type,
                                     space: "4.01",          // TODO
                                     label: "Some Lable",    // TODO
-                                    icon: "#icon-cinema"    // TODO
+                                    icon: "img/icons/default.png"    // TODO
                                 });
                             }
                             break;

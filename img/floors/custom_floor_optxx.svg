@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2994" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="768px" width="1024px" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <metadata id="metadata2999">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+    <path class="map__outline" d="m-1.8007-3.6014,0,773.4,1030.9,0,0-772.5z"/>
+    <rect id="floor" class="map__ground" height="746.3" width="1005.4" y="9.6014" x="9.2028"/>
+    <rect id="room_1" data-space="4.01" class="map__space" height="341.4" width="730.38" y="27.009" x="24.108"/>
+    <rect id="room_2" data-space="4.02" class="map__space" height="440" width="160" y="301.49" x="838.39"/>
+    <rect id="room_3" data-space="4.03" class="map__space" height="262" width="262" y="480.19" x="21.306"/>
+    <rect id="room_4" data-space="4.04" class="map__space" height="262" width="262" y="480.34" x="297.57"/>
+    <path id="tree" d="m798.61,559.57a75.179,75.179,0,1,1,-150.36,0,75.179,75.179,0,1,1,150.36,0z" transform="translate(-34.213365,-44.117233)"/>
+</svg>

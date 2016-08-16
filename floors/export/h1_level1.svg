@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg class="map map--5" viewBox="0 0 1600 1200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+	<title>Level 1</title>
+	<rect id="outline" data-type="outline" height="1200" width="1600" y="1.6667" x="0"/>
+	<rect id="floor" data-type="floor" height="1179" width="1579" y="10.492" x="10.492"/>
+	<rect id="LivingRoom" data-type="room" data-space="LivingRoom" height="1144.3" width="717.68" y="26.994" x="856.99"/>
+	<rect id="Office" data-type="room" data-space="Office" height="427.99" width="542.99" y="27.674" x="30.507"/>
+	<rect id="Kitchen" data-type="room" data-space="Kitchen" height="539.56" width="686.23" y="628.72" x="27.553"/>
+	<rect id="livingroom:tv" data-space="livingroom:tv" data-type="appliance" data-item="tv" height="20" width="20" y="261.67" x="1163.3"/>
+	<rect id="kitchen:lights" data-space="kitchen:lights" data-type="appliance" data-item="light" height="20" width="20" y="786.67" x="353.33"/>
+	<rect id="kitchen:toaster" data-space="kitchen:toaster" data-type="appliance" data-item="toaster" height="20" width="20" y="1078.3" x="570"/>
+	<rect id="kitchen:tassimo" data-space="kitchen:tassimo" data-type="appliance" data-item="tassimo" height="20" width="20" y="1076.7" x="421.67"/>
+	<rect id="kitchen:panini" data-space="kitchen:panini" data-type="appliance" data-item="panini" height="20" width="20" y="1080" x="271.67"/>
+	<rect id="kitchen:telephone" data-space="kitchen:telephone" data-type="appliance" data-item="telephone" height="20" width="20" y="726.67" x="135"/>
+	<rect id="kitchen:coffeepot" data-space="kitchen:coffeepot" data-type="appliance" data-item="coffeepot" height="20" width="20" y="1081.7" x="130"/>
+	<rect id="kitchenhall:lights1" data-space="kitchenhall:lights1" data-type="appliance" data-item="light" height="20" width="20" y="951.67" x="353.33"/>
+	<rect id="kitchen:microwave" data-space="kitchen:microwave" data-type="appliance" data-item="microwave" height="20" width="20" y="853.33" x="131.67"/>
+	<rect id="kitchen:sink" data-space="kitchen:sink" data-type="appliance" data-item="sink" height="20" width="20" y="971.67" x="128.33"/>
+	<rect id="kitchen:refrigerator" data-space="kitchen:refrigerator" data-type="appliance" data-item="refrigerator" height="20" width="20" y="725" x="565"/>
+	<rect id="livingroom:subwoofer" data-space="livingroom:subwoofer" data-type="appliance" data-item="subwoofer" height="20" width="20" y="260" x="1301.7"/>
+	<rect id="livingroom:receiver" data-space="livingroom:receiver" data-type="appliance" data-item="receiver" height="20" width="20" y="123.33" x="1206.7"/>
+	<rect id="livingroom:dvd" data-space="livingroom:dvd" data-type="appliance" data-item="dvd" height="20" width="20" y="121.67" x="1350"/>
+	<rect id="livingroom:lamp2" data-space="livingroom:lamp2" data-type="appliance" data-item="light" height="20" width="20" y="1055" x="1456.7"/>
+	<rect id="livingroom:lamp1" data-space="livingroom:lamp1" data-type="appliance" data-item="light" height="20" width="20" y="1053.3" x="958.33"/>
+	<rect id="livingroom:roku" data-space="livingroom:roku" data-type="appliance" data-item="roku" height="20" width="20" y="120" x="1070"/>
+	<rect id="livingroom:lights1" data-space="livingroom:lights1" data-type="appliance" data-item="light" height="20" width="20" y="115" x="936.67"/>
+	<rect id="livingroom:sideporch" data-space="livingroom:sideporch" data-type="appliance" data-item="sideporch" height="20" width="20" y="468.33" x="1425"/>
+	<rect id="livingroom:firelights" data-space="livingroom:firelights" data-type="appliance" data-item="light" height="20" width="20" y="651.67" x="1426.7"/>
+	<rect id="livingroom:dininglights" data-space="livingroom:dininglights" data-type="appliance" data-item="light" height="20" width="20" y="801.67" x="1211.7"/>
+	<rect id="livingroom:fan" data-space="livingroom:fan" data-type="appliance" data-item="fan" height="20" width="20" y="611.67" x="950"/>
+	<rect id="livingroom:ac" data-space="livingroom:ac" data-type="appliance" data-item="ac" height="20" width="20" y="848.33" x="1451.7"/>
+	<rect id="livingroom:tivo" data-space="livingroom:tivo" data-type="appliance" data-item="tivo" height="20" width="20" y="261.67" x="1433.3"/>
+	<rect id="livingroom:cablebox" data-space="livingroom:cablebox" data-type="appliance" data-item="cablebox" height="20" width="20" y="261.67" x="1016.7"/>
+	<rect id="livingroom:wii" data-space="livingroom:wii" data-type="appliance" data-item="wii" height="20" width="20" y="458.33" x="1163.3"/>
+	<rect id="guest:monitor" data-space="guest:monitor" data-type="appliance" data-item="monitor" height="20" width="20" y="70" x="106.67"/>
+	<rect id="guest:laptop" data-space="guest:laptop" data-type="appliance" data-item="laptop" height="20" width="20" y="73.333" x="431.67"/>
+	<rect id="guest:desklamp" data-space="guest:desklamp" data-type="appliance" data-item="light" height="20" width="20" y="215" x="430"/>
+	<rect id="guest:lamp" data-space="guest:lamp" data-type="appliance" data-item="light" height="20" width="20" y="353.33" x="113.33"/>
+	<rect id="guest:clock" data-space="guest:clock" data-type="appliance" data-item="clock" height="20" width="20" y="351.67" x="430"/>
+</svg>

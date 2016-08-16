@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1600px"
+   height="1200px"
+   id="svg3017"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="h1_level1.svg">
+  <defs
+     id="defs3019" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.6"
+     inkscape:cx="876.58654"
+     inkscape:cy="515.73016"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3022">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <rect
+       style="fill:#b3b3b3;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="outline"
+       width="1600"
+       height="1200"
+       x="0"
+       y="1.666666" />
+    <rect
+       style="fill:#f2f2f2;fill-rule:evenodd;stroke:#000000;stroke-width:0.98469620999999996px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="floor"
+       width="1579.0153"
+       height="1179.0153"
+       x="10.492349"
+       y="10.492393" />
+    <rect
+       style="fill:#e6e6e6;fill-rule:evenodd;stroke:#000000;stroke-width:0.65402335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="LivingRoom"
+       width="717.6792"
+       height="1144.3459"
+       x="856.99371"
+       y="26.99369" />
+    <rect
+       style="fill:#e6e6e6;fill-rule:evenodd;stroke:#000000;stroke-width:0.3479028px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="Office"
+       width="542.98541"
+       height="427.98547"
+       x="30.507305"
+       y="27.673946" />
+    <rect
+       style="fill:#e6e6e6;fill-rule:evenodd;stroke:#000000;stroke-width:0.43914068px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="Kitchen"
+       width="686.22748"
+       height="539.56085"
+       x="27.552959"
+       y="628.71948" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:tv"
+       width="20"
+       height="20"
+       x="1163.3334"
+       y="261.66666"
+       inkscape:label="#tv" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:lights"
+       width="20"
+       height="20"
+       x="353.33334"
+       y="786.66669"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:toaster"
+       width="20"
+       height="20"
+       x="570"
+       y="1078.3333"
+       inkscape:label="#toaster" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:tassimo"
+       width="20"
+       height="20"
+       x="421.66669"
+       y="1076.6667"
+       inkscape:label="#tassimo" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:panini"
+       width="20"
+       height="20"
+       x="271.66669"
+       y="1080"
+       inkscape:label="#panini" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:telephone"
+       width="20"
+       height="20"
+       x="135"
+       y="726.66669"
+       inkscape:label="#telephone" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:coffeepot"
+       width="20"
+       height="20"
+       x="130"
+       y="1081.6666"
+       inkscape:label="#coffeepot" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchenhall:lights1"
+       width="20"
+       height="20"
+       x="353.33334"
+       y="951.66663"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:microwave"
+       width="20"
+       height="20"
+       x="131.66666"
+       y="853.33337"
+       inkscape:label="#microwave" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:sink"
+       width="20"
+       height="20"
+       x="128.33333"
+       y="971.66669"
+       inkscape:label="#sink" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="kitchen:refrigerator"
+       width="20"
+       height="20"
+       x="565"
+       y="725"
+       inkscape:label="#refrigerator" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:subwoofer"
+       width="20"
+       height="20"
+       x="1301.6666"
+       y="260"
+       inkscape:label="#subwoofer" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:receiver"
+       width="20"
+       height="20"
+       x="1206.6667"
+       y="123.33335"
+       inkscape:label="#receiver" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:dvd"
+       width="20"
+       height="20"
+       x="1350"
+       y="121.66668"
+       inkscape:label="#dvd" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:lamp2"
+       width="20"
+       height="20"
+       x="1456.6667"
+       y="1055"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:lamp1"
+       width="20"
+       height="20"
+       x="958.33331"
+       y="1053.3334"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:roku"
+       width="20"
+       height="20"
+       x="1070"
+       y="120.00001"
+       inkscape:label="#roku" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:lights1"
+       width="20"
+       height="20"
+       x="936.66669"
+       y="115.00001"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:sideporch"
+       width="20"
+       height="20"
+       x="1425"
+       y="468.33331"
+       inkscape:label="#sideporch" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:firelights"
+       width="20"
+       height="20"
+       x="1426.6666"
+       y="651.66669"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:dininglights"
+       width="20"
+       height="20"
+       x="1211.6666"
+       y="801.66663"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:fan"
+       width="20"
+       height="20"
+       x="950"
+       y="611.66663"
+       inkscape:label="#fan" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:ac"
+       width="20"
+       height="20"
+       x="1451.6666"
+       y="848.33337"
+       inkscape:label="#ac" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:tivo"
+       width="20"
+       height="20"
+       x="1433.3334"
+       y="261.66669"
+       inkscape:label="#tivo" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:cablebox"
+       width="20"
+       height="20"
+       x="1016.6666"
+       y="261.66666"
+       inkscape:label="#cablebox" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="livingroom:wii"
+       width="20"
+       height="20"
+       x="1163.3334"
+       y="458.33331"
+       inkscape:label="#wii" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="guest:monitor"
+       width="20"
+       height="20"
+       x="106.66666"
+       y="70"
+       inkscape:label="#monitor" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="guest:laptop"
+       width="20"
+       height="20"
+       x="431.66666"
+       y="73.333336"
+       inkscape:label="#laptop" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="guest:desklamp"
+       width="20"
+       height="20"
+       x="430.00003"
+       y="214.99998"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="guest:lamp"
+       width="20"
+       height="20"
+       x="113.33334"
+       y="353.33334"
+       inkscape:label="#light" />
+    <rect
+       style="fill:#ff6600;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="guest:clock"
+       width="20"
+       height="20"
+       x="430"
+       y="351.66666"
+       inkscape:label="#clock" />
+  </g>
+</svg>

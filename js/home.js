@@ -30,9 +30,11 @@ var Home = (function (homeJson) {
      */
 
     /**
-     * Private variables / methods
+     * Private variables
      */
-    var scope = this,
+    var ANALYTICS_ENDPOINT = "http://host:port/analytics",
+        scope = this,
+        homeId,
         levels = {},        //  { key (levelId) : val ([levelId:applianceId, ... ])
         types = {},         //  { key (type) : val ([levelId:applianceId, ... ])
         appliances = {};    //  { key (levelId:applianceId str) : val (appliance obj) }
@@ -41,6 +43,7 @@ var Home = (function (homeJson) {
      * Init Home object
      */
     function init() {
+        homeId = homeJson.id;
         initAppliances()
     }
 
@@ -127,6 +130,60 @@ var Home = (function (homeJson) {
         console.log("types : " + JSON.stringify(types))
     }
 
+    function getAnalytics(fqApplianceId, callback) {
+        /*
+            var res = {
+                homeId : "",
+                levelId : "",
+                applianceID : "",
+                analytics: [{
+                    type : "hourly_usage",
+                    name : "Hourly Usage",
+                    value : [
+                        {time: 1, value: 1.0},
+                        {time: 1, value: 1.0},
+                        {time: 1, value: 1.0}
+                    ]
+                }]
+            };
+        */
+        var username = "admin";
+        var password = "admin";
+        var server_url = "https://192.168.1.4:9543/portal/apis/analytics";
+        var client = new AnalyticsClient().init(username, password, server_url);
+        var query = buildQuery(fqApplianceId, "SOME_ANALYTICS_TABLE");
+        client.search(
+            query,
+            function (data) {
+                console.log(JSON.stringify(data))
+            },
+            function (data) {
+                console.error(data)
+            }
+        )
+    }
+
+    function buildQuery(fqApplianceId, analyticsTable) {
+        var fqai = fqApplianceId.split(':'), query = null;
+        if (fqai.length == 2) {
+            query = {
+                homeId: homeId,
+                levelId: fqai[0],
+                applianceId: fqai[1]
+            };
+            // TODO : build the query here
+            /*{
+                tableName: "ORG_WSO2_IOT_ANALYTICS_STREAM_HOURLYPOWERCONSUMPTIONSTREAM",
+                searchParams: {
+                    query : "ApplianceType : light",
+                        start : 0,
+                        count : 10,
+                }
+            }*/
+        }
+        return query;
+    }
+
     /**
      * Run the init()
      */
@@ -139,19 +196,9 @@ var Home = (function (homeJson) {
         addAppliance: addAppliance,
         updateAppliance: updateAppliance,
         removeAppliance: removeAppliance,
-        printAppliances: printAppliances
+        printAppliances: printAppliances,
     }
 });
 
-var h = new Home("Home 1");
-var h2 = new Home("Home 1");
-h.add({id: "abc", type: "type_a"});
-h.print();
-h2.print();
-h.update({id: "abc", type: "type_b"});
-h.print();
-h2.print();
-h.remove("abc");
-h.print();
-h2.print();
-
+var h = new Home(building);
+h.printAppliances();

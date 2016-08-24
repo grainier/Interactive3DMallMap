@@ -174,7 +174,7 @@ $(function () {
                 }).responseText,
                 levelHbTemplate = Handlebars.compile(levelTemplate),
                 alertHbTemplate = Handlebars.compile(alertTemplate),
-                svg, type, item, appliance, floors, points = [], l, i,
+                svg, type, item, appliance, floors, points = [], l, i, spacesList,
                 initLayout = (function () {
                     for (i = 0; i < building.floors.length; i++) {
                         points.length = 0;
@@ -231,9 +231,14 @@ $(function () {
                             svg: $("<div />").append($(svg).clone()).html(),
                             pins: points
                         }));
-                        $('ul.grouped-by-alert-type').append(alertHbTemplate({
-                            alerts: home.getAlertedDevices(null, null)
-                        }));
+                        home.getAlertedDevices(null, null, function (data) {
+                            $('ul.grouped-by-alert-type').append(alertHbTemplate({
+                                alerts:data
+                            }));
+                            // listjs initiliazation (all mall´s spaces)
+                            spacesList = new List('spaces-list', {valueNames: ['list__link', {data: ['level']}, {data: ['category']}]});
+                            console.log(JSON.stringify(spacesList));
+                        });
                     }
                     floors = $(".level");
                     for (var i = 0; i < floors.length; i++) {
@@ -296,8 +301,8 @@ $(function () {
                 spaceref,
             // sort by ctrls
                 sortByNameCtrl = document.querySelector('#sort-by-name'),
-            // listjs initiliazation (all mall´s spaces)
-                spacesList = new List('spaces-list', {valueNames: ['list__link', {data: ['level']}, {data: ['category']}]}),
+            // listjs initiliazation (all mall´s spaces) //TODO
+                //spacesList = new List('spaces-list', {valueNames: ['list__link', {data: ['level']}, {data: ['category']}]}),
 
             // smaller screens:
             // open search ctrl

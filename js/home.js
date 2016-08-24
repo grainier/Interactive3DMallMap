@@ -184,36 +184,58 @@ var Home = (function (homeJson) {
         return query;
     }
 
-    function getAlerts() {
-        return [
-            {
-                floor_level: 1,
-                alert_type: 1,
-                appliance_id: "basement:hrv"
-            },
-            {
-                floor_level: 1,
-                alert_type: 2,
-                appliance_id: "basement:dehumidifier"
-            },
-            {
-                floor_level: 2,
-                alert_type: 1,
-                appliance_id: "livingroom:ac"
-            },
-            {
-                floor_level: 2,
-                alert_type: 3,
-                appliance_id: "guest:lamp"
-            },
-            {
-                floor_level: 3,
-                alert_type: 1,
-                appliance_id: "bedroom:fan"
-            }
-        ]
-    }
+    function getAlertedDevices(floorId, warningType) {
+        var username = "admin";
+        var password = "admin";
+        var server_url = "http://localhost:9763/portal/apis/analytics";
+        var client = new AnalyticsClient().init(username, password, server_url);
 
+        var query = {
+            tableName: "ORG_WSO2_IOT_ANALYTICS_STREAM_ALERTSTREAM",
+            searchParams: {
+            }
+        };
+
+        client.searchCount(
+            query,
+            function (data) {
+                data = JSON.parse(data.message);
+                var rowCount = parseInt(data);
+                var searchQuery = "HomeID:" + homeId;
+                if(null != floorId) {
+                    searchQuery = searchQuery + " and FloorLevel:" + floorId;
+                }
+                if(null != warningType) {
+                    searchQuery = searchQuery + " and WarningType:" + warningType;
+                }
+                var query = {
+                    tableName: "ORG_WSO2_IOT_ANALYTICS_STREAM_ALERTSTREAM",
+                    searchParams: {
+                        query : searchQuery,
+                        start : 0,
+                        count : rowCount
+                    }
+                };
+                client.search(
+                    query,
+                    function (data) {
+                        data = JSON.parse(data.message);
+                        var alertedObjects = [];
+                        for(var j=0; j < data.length; j++) {
+                            alertedObjects.push(data[j].values);
+                        }
+                        console.log(alertedObjects);
+                    },
+                    function (data) {
+                        console.error(data)
+                    }
+                )
+            },
+            function (data) {
+                console.error(data)
+            }
+        )
+    }
     /**
      * Run the init()
      */
@@ -227,9 +249,6 @@ var Home = (function (homeJson) {
         updateAppliance: updateAppliance,
         removeAppliance: removeAppliance,
         printAppliances: printAppliances,
-        getAlerts: getAlerts,
+        getAlertedDevices: getAlertedDevices,
     }
 });
-
-var h = new Home(building);
-h.printAppliances();

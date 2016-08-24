@@ -232,7 +232,7 @@ $(function () {
                             pins: points
                         }));
                         $('ul.grouped-by-alert-type').append(alertHbTemplate({
-                            alerts: home.getAlerts()
+                            alerts: home.getAlertedDevices(null, null)
                         }));
                     }
                     floors = $(".level");

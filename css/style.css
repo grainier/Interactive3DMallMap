@@ -377,19 +377,19 @@ button:focus {
 }
 
 .content__item[data-category='1'] .content__item-title {
-    color: #7cbf7f;
+    color: red;
 }
 
 .content__item[data-category='2'] .content__item-title {
-    color: #6584c7;
+    color: yellow;
 }
 
 .content__item[data-category='3'] .content__item-title {
-    color: #dc4b7c;
+    color: lightseagreen;
 }
 
 .content__item[data-category='4'] .content__item-title {
-    color: #8d65e0;
+    color: green;
 }
 
 .content__item--hover .content__item-title {
@@ -530,25 +530,25 @@ button:focus {
     margin-top: 2em;
 }
 
-.grouped-by-category [data-category='1']:first-child,
-.grouped-by-category :not([data-category='1']) + [data-category='1'],
-.grouped-by-category [data-category='2']:first-child,
-.grouped-by-category :not([data-category='2']) + [data-category='2'],
-.grouped-by-category [data-category='3']:first-child,
-.grouped-by-category :not([data-category='3']) + [data-category='3'],
-.grouped-by-category [data-category='4']:first-child,
-.grouped-by-category :not([data-category='4']) + [data-category='4'] {
+.grouped-by-alert-type [data-category='1']:first-child,
+.grouped-by-alert-type :not([data-category='1']) + [data-category='1'],
+.grouped-by-alert-type [data-category='2']:first-child,
+.grouped-by-alert-type :not([data-category='2']) + [data-category='2'],
+.grouped-by-alert-type [data-category='3']:first-child,
+.grouped-by-alert-type :not([data-category='3']) + [data-category='3'],
+.grouped-by-alert-type [data-category='4']:first-child,
+.grouped-by-alert-type :not([data-category='4']) + [data-category='4'] {
     margin-top: 4em;
 }
 
-.grouped-by-category [data-category='1']:first-child::before,
-.grouped-by-category :not([data-category='1']) + [data-category='1']::before,
-.grouped-by-category [data-category='2']:first-child::before,
-.grouped-by-category :not([data-category='2']) + [data-category='2']::before,
-.grouped-by-category [data-category='3']:first-child::before,
-.grouped-by-category :not([data-category='3']) + [data-category='3']::before,
-.grouped-by-category [data-category='4']:first-child::before,
-.grouped-by-category :not([data-category='4']) + [data-category='4']::before {
+.grouped-by-alert-type [data-category='1']:first-child::before,
+.grouped-by-alert-type :not([data-category='1']) + [data-category='1']::before,
+.grouped-by-alert-type [data-category='2']:first-child::before,
+.grouped-by-alert-type :not([data-category='2']) + [data-category='2']::before,
+.grouped-by-alert-type [data-category='3']:first-child::before,
+.grouped-by-alert-type :not([data-category='3']) + [data-category='3']::before,
+.grouped-by-alert-type [data-category='4']:first-child::before,
+.grouped-by-alert-type :not([data-category='4']) + [data-category='4']::before {
     font-size: 1.25em;
     position: absolute;
     top: -1.75em;
@@ -556,28 +556,28 @@ button:focus {
     color: #c7c7c9;
 }
 
-.grouped-by-category [data-category='1']:first-child::before,
-.grouped-by-category :not([data-category='1']) + [data-category='1']::before {
-    content: 'Nourish & Refresh';
-    color: #7cbf7f;
+.grouped-by-alert-type [data-category='1']:first-child::before,
+.grouped-by-alert-type :not([data-category='1']) + [data-category='1']::before {
+    content: 'Alerts';
+    color: red;
 }
 
-.grouped-by-category [data-category='2']:first-child::before,
-.grouped-by-category :not([data-category='2']) + [data-category='2']::before {
-    content: 'Learn & Create';
-    color: #6584c7;
+.grouped-by-alert-type [data-category='2']:first-child::before,
+.grouped-by-alert-type :not([data-category='2']) + [data-category='2']::before {
+    content: 'Warning';
+    color: yellow;
 }
 
-.grouped-by-category [data-category='3']:first-child::before,
-.grouped-by-category :not([data-category='3']) + [data-category='3']::before {
-    content: 'Swap & Give';
-    color: #dc4b7c;
+.grouped-by-alert-type [data-category='3']:first-child::before,
+.grouped-by-alert-type :not([data-category='3']) + [data-category='3']::before {
+    content: 'Info';
+    color: lightseagreen;
 }
 
-.grouped-by-category [data-category='4']:first-child::before,
-.grouped-by-category :not([data-category='4']) + [data-category='4']::before {
-    content: 'Relax & Recharge';
-    color: #8d65e0;
+.grouped-by-alert-type [data-category='4']:first-child::before,
+.grouped-by-alert-type :not([data-category='4']) + [data-category='4']::before {
+    content: 'Other';
+    color: green;
 }
 
 .list__item::after {

@@ -118,94 +118,8 @@ var building = {
     ]
 };
 
-
 $(function () {
-    $.get('templates/level.html', function (data) {
-        var template = Handlebars.compile(data),
-            svg, type, item, appliance, pins = [], l, i;
-        for (i = 0; i < building.floors.length; i++) {
-            pins.length = 0;
-            l = i + 1;
-            svg = $(building.floors[i].svg);
-            $(svg).children().each(function (j) {
-                var k = j + 1,
-                    type = $(this).attr("data-type"),
-                    appliance = $(this).attr("id"),
-                    item = $(this).attr("data-item"),
-                    marker_enabled = false;
-                if (type !== undefined && type !== null) {
-                    switch (type) {
-                        case 'appliance':
-                            $(this).addClass('map__hidden');
-                            marker_enabled = (item) ? true : false;
-                            break;
-                        case 'room':
-                            $(this).addClass('map__space');
-                            marker_enabled = true;
-                            break;
-                        case 'floor':
-                            $(this).addClass('map__ground');
-                            break;
-                        case 'outline':
-                            $(this).addClass('map__outline');
-                            break;
-                        case 'tree':
-                            $(this).addClass('map__tree');
-                            break;
-                        case 'lake':
-                            $(this).addClass('map__lake');
-                            break;
-                        default:
-                            break;
-                    }
-                    if (marker_enabled) {
-                        if (appliance !== undefined && appliance !== null && appliance.length > 0) {
-                            item = (item !== undefined && item !== null && item.length > 0) ? item : "default";
-                            pins.push({
-                                appliance: appliance,
-                                level: l,
-                                marker: k,
-                                type: type,
-                                space: "4.01",          // TODO
-                                label: "Some Lable",    // TODO
-                                icon: "img/icons/" + item + ".png"    // TODO
-                            });
-                        }
-                    }
-                }
-            });
-            $('.levels').append(template({
-                svg: $("<div />").append($(svg).clone()).html(),
-                pins: pins
-            }));
-        }
-        var floors = $(".level");
-        for (var i = 0; i < floors.length; i++) {
-            var l = i + 1;
-            var css_class = "level--" + l;
-            var l_selector = "." + css_class;
-            if (l > 1) {
-                var h = i * (60 / floors.length);
-                css.addRule(l_selector, "-webkit-transform: translateZ(" + h + "vmin); transform: translateZ(" + h + "vmin);");
-                /* for (var j = i; j > 0; j--) {
-                 css.addRule(".levels--selected-" + l + " .level--" + j, "-webkit-transform: translateZ(-60vmin); transform: translateZ(-60vmin);")
-                 }*/
-            }
-            css.addRule(l_selector + "::after", "content: 'L" + l + "';");
-            css.addRule(".levels--selected-" + l + " .level:not(.level--" + l + ")", "opacity: 0;");
-            css.addRule(".levels--selected-" + l, "-webkit-transition-delay: 0.25s; transition-delay: 0.25s;");
-            css.addRule(".levels", "-webkit-transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);");
-            css.addRule(".level.level--current", "-webkit-transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);;transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);");
-            $(floors[i]).addClass(css_class);
-            $(floors[i]).attr("aria-label", "Level " + l);
-            $(floors[i]).attr("data-level", l);
-            $(".levels").show(0.15);
-        }
-
-        (function (window) {
-
-            'use strict';
-
+    'use strict';
             // helper functions
             // from https://davidwalsh.name/vendor-prefix
             var prefix = (function () {
@@ -247,6 +161,100 @@ $(function () {
                         onEndCallbackFn();
                     }
                 },
+                home = new Home(building),
+                levelTemplate = $.ajax({
+                    type: "GET",
+                    url: 'templates/level.html',
+                    async: false
+                }).responseText,
+                alertTemplate = $.ajax({
+                    type: "GET",
+                    url: 'templates/alert.html',
+                    async: false
+                }).responseText,
+                levelHbTemplate = Handlebars.compile(levelTemplate),
+                alertHbTemplate = Handlebars.compile(alertTemplate),
+                svg, type, item, appliance, floors, points = [], l, i,
+                initLayout = (function () {
+                    for (i = 0; i < building.floors.length; i++) {
+                        points.length = 0;
+                        l = i + 1;
+                        svg = $(building.floors[i].svg);
+                        $(svg).children().each(function (j) {
+                            var k = j + 1,
+                                type = $(this).attr("data-type"),
+                                appliance = $(this).attr("id"),
+                                item = $(this).attr("data-item"),
+                                marker_enabled = false;
+                            if (type !== undefined && type !== null) {
+                                switch (type) {
+                                    case 'appliance':
+                                        $(this).addClass('map__hidden');
+                                        marker_enabled = (item) ? true : false;
+                                        break;
+                                    case 'room':
+                                        $(this).addClass('map__space');
+                                        marker_enabled = true;
+                                        break;
+                                    case 'floor':
+                                        $(this).addClass('map__ground');
+                                        break;
+                                    case 'outline':
+                                        $(this).addClass('map__outline');
+                                        break;
+                                    case 'tree':
+                                        $(this).addClass('map__tree');
+                                        break;
+                                    case 'lake':
+                                        $(this).addClass('map__lake');
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                if (marker_enabled) {
+                                    if (appliance !== undefined && appliance !== null && appliance.length > 0) {
+                                        item = (item !== undefined && item !== null && item.length > 0) ? item : "default";
+                                        points.push({
+                                            appliance: appliance,
+                                            level: l,
+                                            marker: k,
+                                            type: type,
+                                            space: appliance,          // TODO
+                                            label: "Some Lable",    // TODO
+                                            icon: "img/icons/" + item + ".png"    // TODO
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                        $('.levels').append(levelHbTemplate({
+                            svg: $("<div />").append($(svg).clone()).html(),
+                            pins: points
+                        }));
+                        $('ul.grouped-by-alert-type').append(alertHbTemplate({
+                            alerts: home.getAlerts()
+                        }));
+                    }
+                    floors = $(".level");
+                    for (var i = 0; i < floors.length; i++) {
+                        var l = i + 1;
+                        var css_class = "level--" + l;
+                        var l_selector = "." + css_class;
+                        if (l > 1) {
+                            var h = i * (60 / floors.length);
+                            css.addRule(l_selector, "-webkit-transform: translateZ(" + h + "vmin); transform: translateZ(" + h + "vmin);");
+                        }
+                        css.addRule(l_selector + "::after", "content: 'L" + l + "';");
+                        css.addRule(".levels--selected-" + l + " .level:not(.level--" + l + ")", "opacity: 0;");
+                        css.addRule(".levels--selected-" + l, "-webkit-transition-delay: 0.25s; transition-delay: 0.25s;");
+                        css.addRule(".levels", "-webkit-transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);transform:rotateX(70deg) rotateZ(-45deg) translateZ(-15vmin);");
+                        css.addRule(".level.level--current", "-webkit-transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);;transform:translateZ(15vmin) rotate3d(0, 0, 1, 20deg);");
+                        $(floors[i]).addClass(css_class);
+                        $(floors[i]).attr("aria-label", "Level " + l);
+                        $(floors[i]).attr("data-level", l);
+                        $(".levels").show(0.15);
+                    }
+                })(),
             // the mall element
                 mall = document.querySelector('.mall'),
             // mall´s levels wrapper
@@ -300,7 +308,8 @@ $(function () {
                 closeSearchCtrl = spacesListEl.querySelector('button.close-search');
 
             function init() {
-                // init/bind events
+                // init/bind ui/events
+                initUI();
                 initEvents();
             }
 
@@ -332,11 +341,11 @@ $(function () {
                 // sort by name ctrl - add/remove category name (css pseudo element) from list and sorts the spaces by name
                 sortByNameCtrl.addEventListener('click', function () {
                     if (this.checked) {
-                        classie.remove(spacesEl, 'grouped-by-category');
+                        classie.remove(spacesEl, 'grouped-by-alert-type');
                         spacesList.sort('list__link');
                     }
                     else {
-                        classie.add(spacesEl, 'grouped-by-category');
+                        classie.add(spacesEl, 'grouped-by-alert-type');
                         spacesList.sort('category');
                     }
                 });
@@ -395,6 +404,11 @@ $(function () {
                 closeSearchCtrl.addEventListener('click', function () {
                     closeSearch();
                 });
+            }
+
+            function initUI() {
+                classie.add(spacesEl, 'grouped-by-alert-type');
+                spacesList.sort('category');
             }
 
             /**
@@ -764,9 +778,4 @@ $(function () {
 
             init();
 
-        })(window);
-
-
-        /// -------------------------
-    }, 'html');
 });

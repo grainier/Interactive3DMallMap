@@ -1,0 +1,13 @@
+{{#each alerts}}
+<li
+        class="list__item"
+        data-level="{{floor_level}}"
+        data-category="{{alert_type}}"
+        data-space="{{appliance_id}}">
+    <a
+            href="#"
+            class="list__link">
+        {{appliance_id}}
+    </a>
+</li>
+{{/each}}

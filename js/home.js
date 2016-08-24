@@ -184,6 +184,36 @@ var Home = (function (homeJson) {
         return query;
     }
 
+    function getAlerts() {
+        return [
+            {
+                floor_level: 1,
+                alert_type: 1,
+                appliance_id: "basement:hrv"
+            },
+            {
+                floor_level: 1,
+                alert_type: 2,
+                appliance_id: "basement:dehumidifier"
+            },
+            {
+                floor_level: 2,
+                alert_type: 1,
+                appliance_id: "livingroom:ac"
+            },
+            {
+                floor_level: 2,
+                alert_type: 3,
+                appliance_id: "guest:lamp"
+            },
+            {
+                floor_level: 3,
+                alert_type: 1,
+                appliance_id: "bedroom:fan"
+            }
+        ]
+    }
+
     /**
      * Run the init()
      */
@@ -197,6 +227,7 @@ var Home = (function (homeJson) {
         updateAppliance: updateAppliance,
         removeAppliance: removeAppliance,
         printAppliances: printAppliances,
+        getAlerts: getAlerts,
     }
 });
 

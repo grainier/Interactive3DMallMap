@@ -44,7 +44,8 @@ var Home = (function (homeJson) {
      */
     function init() {
         homeId = homeJson.id;
-        initAppliances()
+        initAppliances();
+        getAlertedDevices("homeA", 3);
     }
 
     /**
@@ -184,6 +185,58 @@ var Home = (function (homeJson) {
         return query;
     }
 
+    function getAlertedDevices(floorId, warningType) {
+        var username = "admin";
+        var password = "admin";
+        var server_url = "http://localhost:9763/portal/apis/analytics";
+        var client = new AnalyticsClient().init(username, password, server_url);
+
+        var query = {
+            tableName: "ORG_WSO2_IOT_ANALYTICS_STREAM_ALERTSTREAM",
+            searchParams: {
+            }
+        };
+
+        client.searchCount(
+            query,
+            function (data) {
+                data = JSON.parse(data.message);
+                var rowCount = parseInt(data);
+                var searchQuery = "HomeID:" + homeId;
+                if(null != floorId) {
+                    searchQuery = searchQuery + " and FloorLevel:" + floorId;
+                }
+                if(null != warningType) {
+                    searchQuery = searchQuery + " and WarningType:" + warningType;
+                }
+                var query = {
+                    tableName: "ORG_WSO2_IOT_ANALYTICS_STREAM_ALERTSTREAM",
+                    searchParams: {
+                        query : searchQuery,
+                        start : 0,
+                        count : rowCount
+                    }
+                };
+                client.search(
+                    query,
+                    function (data) {
+                        data = JSON.parse(data.message);
+                        var alertedObjects = [];
+                        for(var j=0; j < data.length; j++) {
+                            alertedObjects.push(data[j].values);
+                        }
+                        console.log(alertedObjects);
+                    },
+                    function (data) {
+                        console.error(data)
+                    }
+                )
+            },
+            function (data) {
+                console.error(data)
+            }
+        )
+    }
     /**
      * Run the init()
      */
@@ -201,4 +254,4 @@ var Home = (function (homeJson) {
 });
 
 var h = new Home(building);
-h.printAppliances();
+// h.printAppliances();

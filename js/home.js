@@ -184,7 +184,7 @@ var Home = (function (homeJson) {
         return query;
     }
 
-    function getAlertedDevices(floorId, warningType) {
+    function getAlertedDevices(floorId, warningType, callback) {
         var username = "admin";
         var password = "admin";
         var server_url = "http://localhost:9763/portal/apis/analytics";
@@ -224,7 +224,7 @@ var Home = (function (homeJson) {
                         for(var j=0; j < data.length; j++) {
                             alertedObjects.push(data[j].values);
                         }
-                        console.log(alertedObjects);
+                        callback(alertedObjects);
                     },
                     function (data) {
                         console.error(data)

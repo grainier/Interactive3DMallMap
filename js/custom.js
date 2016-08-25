@@ -120,8 +120,9 @@ var building = {
 
 $(function () {
     'use strict';
-    // helper functions
-    // from https://davidwalsh.name/vendor-prefix
+    /**
+     * helper functions (https://davidwalsh.name/vendor-prefix)
+     */
     var prefix = (function () {
         var styles = window.getComputedStyle(document.documentElement, ''),
             pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1],
@@ -134,7 +135,9 @@ $(function () {
         };
     })();
 
-    // vars & stuff
+    /**
+     * Global variables
+     */
     var support = {transitions: Modernizr.csstransitions},
         transEndEventNames = {
             'WebkitTransition': 'webkitTransitionEnd',
@@ -147,19 +150,14 @@ $(function () {
         onEndTransition = function (el, callback, propTest) {
             var onEndCallbackFn = function (ev) {
                 if (support.transitions) {
-                    if (ev.target != this || propTest && ev.propertyName !== propTest && ev.propertyName !== prefix.css + propTest) return;
+                    if (ev.target != this ||
+                        propTest && ev.propertyName !== propTest && ev.propertyName !== prefix.css + propTest) return;
                     this.removeEventListener(transEndEventName, onEndCallbackFn);
                 }
-                if (callback && typeof callback === 'function') {
-                    callback.call(this);
-                }
+                if (callback && typeof callback === 'function') callback.call(this);
             };
-            if (support.transitions) {
-                el.addEventListener(transEndEventName, onEndCallbackFn);
-            }
-            else {
-                onEndCallbackFn();
-            }
+            if (support.transitions) el.addEventListener(transEndEventName, onEndCallbackFn);
+            else onEndCallbackFn();
         },
         home = new Home(building),
         levelTemplate = $.ajax({
@@ -174,20 +172,31 @@ $(function () {
         }).responseText,
         levelHbTemplate = Handlebars.compile(levelTemplate),
         alertHbTemplate = Handlebars.compile(alertTemplate),
-        svg, type, item, appliance, floors, points = [],
+        mallLevels = (function () {
+            return $('.mall .levels .level');
+        }),
         selectedLevel,// selected level position
         isOpenContentArea,// check if a content item is opened
         isNavigating,// check if currently animating/navigating
         isExpanded,// check if all levels are shown or if one level is shown (expanded)
-        spaceref, // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
-        mallLevels = (function () {
-            return $('.mall .levels .level');
-        });
+        spaceref; // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
 
+    /**
+     * Initialize UI and bind events
+     */
     function init() {
-        // init/bind ui/events
         initUI();
         initEvents();
+    }
+
+    /**
+     * Initialize UI components (Floors and Alerts)
+     */
+    function initUI() {
+        renderLevels();
+        renderAlerts();
+        setDynamicCSSForLevels();
+        sortAlertsByType();
     }
 
     /**
@@ -254,11 +263,13 @@ $(function () {
         });
     }
 
-    function initUI() {
-        for (var l, i = 0; i < building.floors.length; i++) {
+    function renderLevels() {
+        var points = [], svg,
+            floors = home.getHomeSpec().floors;
+        for (var i = 0, l; i < floors.length; i++) {
             points.length = 0;
             l = i + 1;
-            svg = $(building.floors[i].svg);
+            svg = $(floors[i].svg);
             $(svg).children().each(function (j) {
                 var k = j + 1,
                     type = $(this).attr("data-type"),
@@ -311,13 +322,20 @@ $(function () {
                 pins: points
             }));
         }
+    }
+
+    function renderAlerts() {
         $('ul.grouped-by-alert-type').append(alertHbTemplate({
+            // TODO : Change back to getAlertedDevices instead of stubs
             // alerts: home.getAlertedDevices(null, null)
             alerts: home.getAlerts()
         }));
-        floors = $(".level");
-        for (var i = 0; i < floors.length; i++) {
-            var l = i + 1;
+    }
+
+    function setDynamicCSSForLevels() {
+        var floors = $(".level");
+        for (var i = 0, l; i < floors.length; i++) {
+            l = i + 1;
             var css_class = "level--" + l;
             var l_selector = "." + css_class;
             if (l > 1) {
@@ -334,7 +352,6 @@ $(function () {
             $(floors[i]).attr("data-level", l);
             $(".levels").show(0.15);
         }
-        sortAlertsByType();
     }
 
     function sortAlertsByType() {

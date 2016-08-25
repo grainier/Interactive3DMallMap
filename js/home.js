@@ -34,6 +34,7 @@ var Home = (function (homeJson) {
      */
     var ANALYTICS_ENDPOINT = "http://host:port/analytics",
         scope = this,
+        homeSpec,
         homeId,
         levels = {},        //  { key (levelId) : val ([levelId:applianceId, ... ])
         types = {},         //  { key (type) : val ([levelId:applianceId, ... ])
@@ -43,7 +44,8 @@ var Home = (function (homeJson) {
      * Init Home object
      */
     function init() {
-        homeId = homeJson.id;
+        homeSpec = homeJson;
+        homeId = homeSpec.id;
         initAppliances()
     }
 
@@ -86,6 +88,10 @@ var Home = (function (homeJson) {
             }
         });
         return res
+    }
+
+    function getHomeSpec() {
+        return homeSpec;
     }
 
     /**
@@ -285,6 +291,7 @@ var Home = (function (homeJson) {
         removeAppliance: removeAppliance,
         printAppliances: printAppliances,
         getAlertedDevices: getAlertedDevices,
+        getHomeSpec: getHomeSpec,
         getAlerts: getAlerts,
     }
 });

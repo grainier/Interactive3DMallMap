@@ -236,6 +236,41 @@ var Home = (function (homeJson) {
             }
         )
     }
+    
+    function getAlerts() {
+        return [
+            {
+                FloorLevel:1,
+                WarningType:"alert",
+                ApplianceId:"basement:batteries"
+            },
+            {
+                FloorLevel:1,
+                WarningType:"warning",
+                ApplianceId:"basement:hrv"
+            },
+            {
+                FloorLevel:2,
+                WarningType:"info",
+                ApplianceId:"livingroom:tv"
+            },
+            {
+                FloorLevel:2,
+                WarningType:"warning",
+                ApplianceId:"livingroom:subwoofer"
+            },
+            {
+                FloorLevel:2,
+                WarningType:"info",
+                ApplianceId:"livingroom:ac"
+            },
+            {
+                FloorLevel:3,
+                WarningType:"alert",
+                ApplianceId:"master:ac"
+            }
+        ]
+    }
     /**
      * Run the init()
      */
@@ -250,5 +285,6 @@ var Home = (function (homeJson) {
         removeAppliance: removeAppliance,
         printAppliances: printAppliances,
         getAlertedDevices: getAlertedDevices,
+        getAlerts: getAlerts,
     }
 });

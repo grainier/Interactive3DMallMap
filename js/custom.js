@@ -160,18 +160,6 @@ $(function () {
             else onEndCallbackFn();
         },
         home = new Home(building),
-        levelTemplate = $.ajax({
-            type: "GET",
-            url: 'templates/level.html',
-            async: false
-        }).responseText,
-        alertTemplate = $.ajax({
-            type: "GET",
-            url: 'templates/alert.html',
-            async: false
-        }).responseText,
-        levelHbTemplate = Handlebars.compile(levelTemplate),
-        alertHbTemplate = Handlebars.compile(alertTemplate),
         mallLevels = (function () {
             return $('.mall .levels .level');
         }),
@@ -185,19 +173,52 @@ $(function () {
      * Initialize UI and bind events
      */
     function init() {
-        initUI();
-        initEvents();
+        loadUI(function () {
+            initEvents();
+        });
     }
 
     /**
      * Initialize UI components (Floors and Alerts)
      */
-    function initUI() {
-        renderLevels();
-        renderAlerts();
-        setDynamicCSSForLevels();
-        sortAlertsByType();
+    function loadUI(cb) {
+        startLoadingUI(loadTemplates([
+            {
+                templatePath: 'templates/level.html',
+                callback: renderLevels
+            },
+            {
+                templatePath: 'templates/alert.html',
+                callback: renderAlerts
+            }
+        ], function () {
+            setDynamicCSSForLevels();
+            sortAlertsByType();
+            completeLoadingUI(null);
+            cb();
+        }));
     }
+
+    /**
+     * Show loading UI spinner
+     * @param callback
+     */
+    function startLoadingUI(callback) {
+        $('#loading').fadeIn(1000, function () {
+            if (typeof callback === 'function') callback()
+        });
+    }
+
+    /**
+     * Hide loading UI spinner
+     * @param callback
+     */
+    function completeLoadingUI(callback) {
+        $('#loading').fadeOut(1000, function () {
+            if (typeof callback === 'function') callback()
+        });
+    }
+
 
     /**
      * Initialize/Bind events fn.
@@ -263,7 +284,32 @@ $(function () {
         });
     }
 
-    function renderLevels() {
+    function loadTemplates(cbInfo, cb) {
+        var ajaxes = [],
+            callbacks = [];
+
+        cbInfo.forEach(function (elem) {
+            ajaxes.push($.ajax({type: "GET", url: elem.templatePath}));
+            callbacks.push(elem.callback)
+        });
+
+        // TODO : Use proper fix here
+        $.when($.ajax({type: "GET", url: "templates/level.html"}), $.ajax({type: "GET", url: "templates/alert.html"})).then(
+            function () {
+                var args = Array.prototype.slice.call(arguments);
+                callbacks.forEach(function (elem, index) {
+                    elem(Handlebars.compile(args[index][0]));
+                });
+                if (typeof cb === 'function') cb();
+            },
+            function () {
+                // failure
+                console.error("loadTemplates() : could not load UI templates.")
+            }
+        );
+    }
+
+    function renderLevels(levelTemplate) {
         var points = [], svg,
             floors = home.getHomeSpec().floors;
         for (var i = 0, l; i < floors.length; i++) {
@@ -317,15 +363,15 @@ $(function () {
                     }
                 }
             });
-            $('.levels').append(levelHbTemplate({
+            $('.levels').append(levelTemplate({
                 svg: $("<div />").append($(svg).clone()).html(),
                 pins: points
             }));
         }
     }
 
-    function renderAlerts() {
-        $('ul.grouped-by-alert-type').append(alertHbTemplate({
+    function renderAlerts(alertTemplate) {
+        $('ul.grouped-by-alert-type').append(alertTemplate({
             // TODO : Change back to getAlertedDevices instead of stubs
             // alerts: home.getAlertedDevices(null, null)
             alerts: home.getAlerts()
@@ -334,6 +380,7 @@ $(function () {
 
     function setDynamicCSSForLevels() {
         var floors = $(".level");
+        console.log(floors);
         for (var i = 0, l; i < floors.length; i++) {
             l = i + 1;
             var css_class = "level--" + l;

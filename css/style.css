@@ -717,6 +717,28 @@ button:focus {
     fill-opacity: 1;
 }
 
+.overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #222;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    z-index: 999;
+}
+
+.overlay > i {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    font-size: 15vmin;
+    text-align: center;
+    color: orange;
+}
+
 /* Mobile compatability */
 .open-search,
 .close-search {

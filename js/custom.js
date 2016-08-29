@@ -1,5 +1,5 @@
 var building = {
-    id: "id",
+    id: "HomeA",
     surrounding: "<svg> for surrounding goes here",
     floors: [
         {
@@ -114,6 +114,26 @@ var building = {
             + '<rect id="bedroom:video" data-space="bedroom:video" data-type="appliance" data-item="video" height="20" width="20" y="273.33" x="1018.3"/>'
             + '<rect id="bedroom:fan" data-space="bedroom:fan" data-type="appliance" data-item="fan" height="20" width="20" y="410" x="1480"/>'
             + '</svg>'
+        },
+        {
+            id: "Basement", // we ignore this for now just go with Level X
+            title: "Basement", // do we really need this ???
+            svg: '<svg class="map map--5" viewBox="0 0 1600 1200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
+            + '<title>Basement</title>'
+            + '<rect id="outline" data-type="outline" height="1200" width="1600" y="1.6667" x="0"/>'
+            + '<rect id="floor" data-type="floor" height="1179" width="1579" y="10.492" x="10.492"/>'
+            + '<rect id="Cellar" data-type="room" data-space="Cellar" height="714.45" width="819.45" y="462.94" x="755.28"/>'
+            + '<rect id="BoilerRoom" data-type="room" data-space="BoilerRoom" height="656.23" width="554.56" y="521.05" x="21.884"/>'
+            + '<rect id="LaundryRoom" data-type="room" data-space="LaundryRoom" height="321.34" width="653" y="22.665" x="23.499"/>'
+            + '<rect id="basement:freezer" data-space="basement:freezer" data-type="appliance" data-item="freezer" height="20" width="20" y="586.67" x="875"/>'
+            + '<rect id="basement:tv" data-space="basement:tv" data-type="appliance" data-item="tv" height="20" width="20" y="1067.6" x="896.8"/>'
+            + '<rect id="basement:batteries" data-space="basement:batteries" data-type="appliance" data-item="battery" height="20" width="20" y="1056.7" x="1450"/>'
+            + '<rect id="basement:desklamp" data-space="basement:desklamp" data-type="appliance" data-item="light" height="20" width="20" y="1063.3" x="1041.7"/>'
+            + '<rect id="basement:washingmachine" data-space="basement:washingmachine" data-type="appliance" data-item="washingmachine" height="20" width="20" y="131.67" x="570"/>'
+            + '<rect id="basement:dehumidifier" data-space="basement:dehumidifier" data-type="appliance" data-item="dehumidifier" height="20" width="20" y="653.33" x="123.33"/>'
+            + '<rect id="basement:hrv" data-space="basement:hrv" data-type="appliance" data-item="hrv" height="20" width="20" y="1041.7" x="121.67"/>'
+            + '<rect id="basement:waterpump" data-space="basement:waterpump" data-type="appliance" data-item="waterpump" height="20" width="20" y="1045" x="446.67"/>'
+            + '</svg>'
         }
     ]
 };
@@ -167,7 +187,10 @@ $(function () {
         isOpenContentArea,// check if a content item is opened
         isNavigating,// check if currently animating/navigating
         isExpanded,// check if all levels are shown or if one level is shown (expanded)
-        spaceref; // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
+        spaceref, // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
+        contentHBTemplate = null, // handlebar template to render content
+        // dashboardURL = "http://localhost:9763/portal/dashboards/home-dashboard";
+        dashboardURL = "http://localhost:63342/3d-mall-map/";
 
     /**
      * Initialize UI and bind events
@@ -190,6 +213,10 @@ $(function () {
             {
                 templatePath: 'templates/alert.html',
                 callback: renderAlerts
+            },
+            {
+                templatePath: 'templates/content.html',
+                callback: assignContentTemplate
             }
         ], function () {
             setDynamicCSSForLevels();
@@ -228,19 +255,36 @@ $(function () {
         $(".levels").on("click", ".level", function () {
             var level = $(this).attr("data-level");
             showLevel(level);
-        }).on("click", '.pin', function (e) {
+        });
+        $('.level').on("click", 'a.pin', function (e) {
             e.preventDefault();
+            // render content from template
+            var homeId = home.getHomeId();
+            var level = $(this).attr("data-level");
+            var appliance = $(this).attr("data-appliance");
+            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+            $('div.content').html(contentHBTemplate({
+                HomeId: homeId,
+                FloorLevel: level,
+                ApplianceId: appliance,
+                DashboardURL: dashboardURL+"?key="+key
+            }));
             // open content for this pin
-            openContent($(this).attr('data-space'));
+            openContent(appliance);
             // remove hover class (showing the title)
-            $('.content__item[data-space="' + $(this).attr('data-space') + '"]').removeClass('content__item--hover');
-        }).on("mouseenter", '.pin', function () {
+            $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
+        });
+        $('.level').on("mouseenter", 'a.pin', function () {
             if (!isOpenContentArea) {
-                $('.content__item[data-space="' + $(this).attr('data-space') + '"]').addClass('content__item--hover');
+                $('div.content').html(contentHBTemplate(
+                    { HomeId: "", FloorLevel: "", ApplianceId: $(this).attr("data-appliance"), DashboardURL: ""}
+                ));
+                $('.content__item[data-space="' + $(this).attr("data-appliance") + '"]').addClass('content__item--hover');
             }
-        }).on("mouseleave", '.pin', function (e) {
+        });
+        $('.level').on("mouseleave", 'a.pin', function () {
             if (!isOpenContentArea) {
-                $('.content__item[data-space="' + $(this).attr('data-space') + '"]').removeClass('content__item--hover');
+                $('.content__item[data-space="' + $(this).attr("data-appliance") + '"]').removeClass('content__item--hover');
             }
         });
 
@@ -266,6 +310,7 @@ $(function () {
             // open level
             showLevel($(parent).attr('data-level'));
             // open content for this space
+            // TODO : Fill in content area before opening
             openContent($(parent).attr('data-space'));
         });
 
@@ -294,7 +339,11 @@ $(function () {
         });
 
         // TODO : Use proper fix here
-        $.when($.ajax({type: "GET", url: "templates/level.html"}), $.ajax({type: "GET", url: "templates/alert.html"})).then(
+        $.when(
+            $.ajax({type: "GET", url: "templates/level.html"}),
+            $.ajax({type: "GET", url: "templates/alert.html"}),
+            $.ajax({type: "GET", url: "templates/content.html"})
+        ).then(
             function () {
                 var args = Array.prototype.slice.call(arguments);
                 callbacks.forEach(function (elem, index) {
@@ -372,15 +421,16 @@ $(function () {
 
     function renderAlerts(alertTemplate) {
         $('ul.grouped-by-alert-type').append(alertTemplate({
-            // TODO : Change back to getAlertedDevices instead of stubs
-            // alerts: home.getAlertedDevices(null, null)
             alerts: home.getAlerts()
         }));
     }
 
+    function assignContentTemplate(contentTemplate) {
+        contentHBTemplate = contentTemplate;
+    }
+
     function setDynamicCSSForLevels() {
         var floors = $(".level");
-        console.log(floors);
         for (var i = 0, l; i < floors.length; i++) {
             l = i + 1;
             var css_class = "level--" + l;
@@ -615,8 +665,9 @@ $(function () {
                 $(currentLevel).removeClass('level--current');
             }, 60);
 
-            $('.mall>.levels').removeClass('levels--selected-' + prevSelectedLevel);
-            $('.mall>.levels').addClass('levels--selected-' + selectedLevel);
+            $('.mall>.levels')
+                .removeClass('levels--selected-' + prevSelectedLevel)
+                .addClass('levels--selected-' + selectedLevel);
 
             // show the current level´s pins
             showPins();

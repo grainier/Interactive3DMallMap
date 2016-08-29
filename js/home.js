@@ -91,7 +91,11 @@ var Home = (function (homeJson) {
     }
 
     function getHomeSpec() {
-        return homeSpec;
+        return homeSpec
+    }
+
+    function getHomeId() {
+        return homeId
     }
 
     /**
@@ -293,5 +297,6 @@ var Home = (function (homeJson) {
         getAlertedDevices: getAlertedDevices,
         getHomeSpec: getHomeSpec,
         getAlerts: getAlerts,
+        getHomeId: getHomeId,
     }
 });

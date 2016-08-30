@@ -262,15 +262,8 @@ $(function () {
             var homeId = home.getHomeId();
             var level = $(this).attr("data-level");
             var appliance = $(this).attr("data-appliance");
-            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
-            $('div.content').html(contentHBTemplate({
-                HomeId: homeId,
-                FloorLevel: level,
-                ApplianceId: appliance,
-                DashboardURL: dashboardURL+"?key="+key
-            }));
             // open content for this pin
-            openContent(appliance);
+            openContent(homeId, level, appliance);
             // remove hover class (showing the title)
             $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
         });
@@ -305,13 +298,15 @@ $(function () {
         $('ul.alerts').on("click", '.list__item > a.list__link', function (e) {
             e.preventDefault();
             var parent = $(this).parent();
+            var homeId = home.getHomeId();
+            var level = $(parent).attr('data-level');
+            var appliance = $(parent).attr("data-appliance");
             // for smaller screens: close search bar
             closeSearch();
             // open level
-            showLevel($(parent).attr('data-level'));
+            showLevel(level);
             // open content for this space
-            // TODO : Fill in content area before opening
-            openContent($(parent).attr('data-space'));
+            openContent(homeId, level, appliance);
         });
 
         $('.main').on("click", 'button.open-search', function () {
@@ -704,15 +699,23 @@ $(function () {
     /**
      * Opens/Reveals a content item.
      */
-    function openContent(spacerefval) {
+    function openContent(homeId, levelId, applianceId) {
+        var key = btoa("HomeID="+homeId+"&FloorLevel="+levelId+"&ApplianceId="+applianceId);
+        $('div.content').html(contentHBTemplate({
+            HomeId: homeId,
+            FloorLevel: levelId,
+            ApplianceId: applianceId,
+            DashboardURL: dashboardURL+"?key="+key
+        }));
+
         // if one already shown:
         if (isOpenContentArea) {
             hideSpace();
-            spaceref = spacerefval;
+            spaceref = applianceId;
             showSpace();
         }
         else {
-            spaceref = spacerefval;
+            spaceref = applianceId;
             openContentArea();
         }
 
@@ -720,7 +723,10 @@ $(function () {
         $('#spaces-list').find('ul.alerts > li.list__item--active').removeClass('list__item--active');
 
         // list item gets class active (if the list item is currently shown in the list)
-        $('#spaces-list').find('ul.alerts > li[data-space="' + spacerefval + '"]').addClass('list__item--active');
+        $('#spaces-list').find('ul.alerts > li[data-space="' + applianceId + '"]').addClass('list__item--active');
+
+        // show close ctrl
+        $('button.content__button').removeClass('content__button--hidden');
 
         // remove class selected (if any) from current space
         var activeSpaceArea = mallLevels()[selectedLevel - 1].querySelector('svg > .map__space--selected');
@@ -738,8 +744,6 @@ $(function () {
         isOpenContentArea = true;
         // shows space
         showSpace(true);
-        // show close ctrl
-        $('button.content__button').removeClass('content__button--hidden');
         // resize mall area
         $('.mall').addClass('mall--content-open');
         // disable mall nav ctrls

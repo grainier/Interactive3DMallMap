@@ -283,7 +283,11 @@ $(function () {
             // open level
             showLevel(level);
             // open content for this space
-            openContent(homeId, level, appliance);
+            // TODO : Better to use a callback instead of timeout
+            setTimeout(function () {
+                openContent(homeId, level, appliance);
+            }, 1300);
+
         });
 
         $('.main').on("click", 'button.open-search', function () {

@@ -172,6 +172,7 @@ $(function () {
         // dashboardURLAppliance = "http://localhost:63342/3d-mall-map/",
         // dashboardURLFloorLevel = "http://localhost:63342/3d-mall-map/";
         dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-dashboard/page0",
+        dashboardURLRoom = "http://localhost:9763/portal/dashboards/home-analytics/room",
         dashboardURLFloorLevel = "http://localhost:9763/portal/dashboards/home-dashboard/floor";
 
     /**
@@ -249,8 +250,13 @@ $(function () {
             var homeId = home.getHomeId();
             var level = $(this).attr("data-level");
             var appliance = $(this).attr("data-appliance");
-            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
-            var url = dashboardURLAppliance+"?key="+key;
+            var type = $(this).attr("data-type");
+            var key = (type === "room")
+                ? btoa("HomeID="+homeId+"&FloorLevel="+level+"&RoomName="+appliance)
+                : btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+            var url = (type === "room")
+                ? dashboardURLRoom+"?key="+key
+                : dashboardURLAppliance+"?key="+key;
             // open content for this pin
             openContent(homeId, level, appliance, url);
             // remove hover class (showing the title)

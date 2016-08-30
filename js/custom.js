@@ -114,26 +114,6 @@ var building = {
             + '<rect id="bedroom:video" data-space="bedroom:video" data-type="appliance" data-item="video" height="20" width="20" y="273.33" x="1018.3"/>'
             + '<rect id="bedroom:fan" data-space="bedroom:fan" data-type="appliance" data-item="fan" height="20" width="20" y="410" x="1480"/>'
             + '</svg>'
-        },
-        {
-            id: "Basement", // we ignore this for now just go with Level X
-            title: "Basement", // do we really need this ???
-            svg: '<svg class="map map--5" viewBox="0 0 1600 1200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">'
-            + '<title>Basement</title>'
-            + '<rect id="outline" data-type="outline" height="1200" width="1600" y="1.6667" x="0"/>'
-            + '<rect id="floor" data-type="floor" height="1179" width="1579" y="10.492" x="10.492"/>'
-            + '<rect id="Cellar" data-type="room" data-space="Cellar" height="714.45" width="819.45" y="462.94" x="755.28"/>'
-            + '<rect id="BoilerRoom" data-type="room" data-space="BoilerRoom" height="656.23" width="554.56" y="521.05" x="21.884"/>'
-            + '<rect id="LaundryRoom" data-type="room" data-space="LaundryRoom" height="321.34" width="653" y="22.665" x="23.499"/>'
-            + '<rect id="basement:freezer" data-space="basement:freezer" data-type="appliance" data-item="freezer" height="20" width="20" y="586.67" x="875"/>'
-            + '<rect id="basement:tv" data-space="basement:tv" data-type="appliance" data-item="tv" height="20" width="20" y="1067.6" x="896.8"/>'
-            + '<rect id="basement:batteries" data-space="basement:batteries" data-type="appliance" data-item="battery" height="20" width="20" y="1056.7" x="1450"/>'
-            + '<rect id="basement:desklamp" data-space="basement:desklamp" data-type="appliance" data-item="light" height="20" width="20" y="1063.3" x="1041.7"/>'
-            + '<rect id="basement:washingmachine" data-space="basement:washingmachine" data-type="appliance" data-item="washingmachine" height="20" width="20" y="131.67" x="570"/>'
-            + '<rect id="basement:dehumidifier" data-space="basement:dehumidifier" data-type="appliance" data-item="dehumidifier" height="20" width="20" y="653.33" x="123.33"/>'
-            + '<rect id="basement:hrv" data-space="basement:hrv" data-type="appliance" data-item="hrv" height="20" width="20" y="1041.7" x="121.67"/>'
-            + '<rect id="basement:waterpump" data-space="basement:waterpump" data-type="appliance" data-item="waterpump" height="20" width="20" y="1045" x="446.67"/>'
-            + '</svg>'
         }
     ]
 };
@@ -252,11 +232,10 @@ $(function () {
      */
     function initEvents() {
         // click on a Mall´s level / hovering a pin / clicking a pin
-        $(".levels").on("click", ".level", function () {
+        $(".mall > .levels").on("click", ".level", function () {
             var level = $(this).attr("data-level");
             showLevel(level);
-        });
-        $('.level').on("click", 'a.pin', function (e) {
+        }).on("click", 'a.pin', function (e) {
             e.preventDefault();
             // render content from template
             var homeId = home.getHomeId();
@@ -266,16 +245,14 @@ $(function () {
             openContent(homeId, level, appliance);
             // remove hover class (showing the title)
             $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
-        });
-        $('.level').on("mouseenter", 'a.pin', function () {
+        }).on("mouseenter", 'a.pin', function () {
             if (!isOpenContentArea) {
                 $('div.content').html(contentHBTemplate(
                     { HomeId: "", FloorLevel: "", ApplianceId: $(this).attr("data-appliance"), DashboardURL: ""}
                 ));
                 $('.content__item[data-space="' + $(this).attr("data-appliance") + '"]').addClass('content__item--hover');
             }
-        });
-        $('.level').on("mouseleave", 'a.pin', function () {
+        }).on("mouseleave", 'a.pin', function () {
             if (!isOpenContentArea) {
                 $('.content__item[data-space="' + $(this).attr("data-appliance") + '"]').removeClass('content__item--hover');
             }
@@ -399,8 +376,6 @@ $(function () {
                                 level: l,
                                 marker: k,
                                 type: type,
-                                space: "4.01",          // TODO
-                                label: "Some Lable",    // TODO
                                 icon: "img/icons/" + item + ".png"    // TODO
                             });
                         }
@@ -409,6 +384,7 @@ $(function () {
             });
             $('.levels').append(levelTemplate({
                 svg: $("<div />").append($(svg).clone()).html(),
+                level: l,
                 pins: points
             }));
         }
@@ -473,7 +449,7 @@ $(function () {
 
         // control navigation controls state
         setNavigationState();
-
+        
         $('.mall>.levels').addClass('levels--selected-' + selectedLevel);
 
         // the level element
@@ -482,6 +458,8 @@ $(function () {
 
         onEndTransition(levelEl, function () {
             $('.mall>.levels').addClass('levels--open');
+
+            $('.level[data-level!="' + selectedLevel + '"]').hide();
 
             // show level pins
             showPins();
@@ -527,6 +505,8 @@ $(function () {
         if (isOpenContentArea) {
             closeContentArea();
         }
+
+        $('.level[data-level!="' + selectedLevel + '"]').show(1300);
     }
 
     /**

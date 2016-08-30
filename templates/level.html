@@ -1,4 +1,4 @@
-<div class="level">
+<div class="level" data-level="{{level}}">
     {{{svg}}}
     <div class="level__pins">
         {{#each pins}}
@@ -7,9 +7,9 @@
            data-type="{{type}}"
            data-level="{{level}}"
            data-marker="{{marker}}"
-           data-space="{{space}}"
+           data-space="{{appliance}}"
            href="#"
-           aria-label="{{label}}">
+           aria-label="{{appliance}}">
 			<span class="pin__icon">
                 <svg class="icon icon--pin">
                     <use xlink:href="#icon-pin"></use>

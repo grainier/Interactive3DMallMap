@@ -171,8 +171,8 @@ $(function () {
         contentHBTemplate = null, // handlebar template to render content
         // dashboardURLAppliance = "http://localhost:63342/3d-mall-map/",
         // dashboardURLFloorLevel = "http://localhost:63342/3d-mall-map/";
-        dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-dashboard/page0",
-        dashboardURLFloorLevel = "http://localhost:9763/portal/dashboards/home-dashboard/floor";
+        dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-analytics/appliances",
+        dashboardURLFloorLevel = "http://localhost:9763/portal/dashboards/home-analytics/floor";
 
     /**
      * Initialize UI and bind events

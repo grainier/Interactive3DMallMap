@@ -234,7 +234,7 @@ $(function () {
         // click on a Mall´s level / hovering a pin / clicking a pin
         $(".mall > .levels").on("click", ".level", function () {
             var level = $(this).attr("data-level");
-            showLevel(level);
+            showLevel(level, null);
         }).on("click", 'a.pin', function (e) {
             e.preventDefault();
             // render content from template
@@ -280,13 +280,10 @@ $(function () {
             var appliance = $(parent).attr("data-appliance");
             // for smaller screens: close search bar
             closeSearch();
-            // open level
-            showLevel(level);
-            // open content for this space
-            // TODO : Better to use a callback instead of timeout
-            setTimeout(function () {
+            // open level and open content for this space
+            showLevel(level, function () {
                 openContent(homeId, level, appliance);
-            }, 1300);
+            });
 
         });
 
@@ -443,7 +440,7 @@ $(function () {
     /**
      * Opens a level. The current level moves to the center while the other ones move away.
      */
-    function showLevel(level) {
+    function showLevel(level, callback) {
         if (isExpanded) {
             return false;
         }
@@ -469,6 +466,8 @@ $(function () {
             showPins();
 
             isExpanded = true;
+
+            if (typeof callback === 'function') callback();
         }, 'transform');
 
         // hide surroundings element

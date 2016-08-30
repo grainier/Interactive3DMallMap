@@ -169,8 +169,10 @@ $(function () {
         isExpanded,// check if all levels are shown or if one level is shown (expanded)
         spaceref, // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
         contentHBTemplate = null, // handlebar template to render content
-        // dashboardURL = "http://localhost:9763/portal/dashboards/home-dashboard";
-        dashboardURL = "http://localhost:63342/3d-mall-map/";
+        // dashboardURLAppliance = "http://localhost:63342/3d-mall-map/",
+        // dashboardURLFloorLevel = "http://localhost:63342/3d-mall-map/";
+        dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-dashboard/page0",
+        dashboardURLFloorLevel = "http://localhost:9763/portal/dashboards/home-dashboard/floor";
 
     /**
      * Initialize UI and bind events
@@ -234,15 +236,23 @@ $(function () {
         // click on a Mall´s level / hovering a pin / clicking a pin
         $(".mall > .levels").on("click", ".level", function () {
             var level = $(this).attr("data-level");
-            showLevel(level, null);
+            showLevel(level, function () {
+                var homeId = home.getHomeId();
+                var appliance = "Level " + level;
+                var key = btoa("HomeID="+homeId+"&FloorLevel="+level);
+                var url = dashboardURLFloorLevel + "?key="+key;
+                openContent(homeId, level, appliance, url); // open content for this pin
+            });
         }).on("click", 'a.pin', function (e) {
             e.preventDefault();
             // render content from template
             var homeId = home.getHomeId();
             var level = $(this).attr("data-level");
             var appliance = $(this).attr("data-appliance");
+            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+            var url = dashboardURLAppliance+"?key="+key;
             // open content for this pin
-            openContent(homeId, level, appliance);
+            openContent(homeId, level, appliance, url);
             // remove hover class (showing the title)
             $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
         }).on("mouseenter", 'a.pin', function () {
@@ -278,11 +288,13 @@ $(function () {
             var homeId = home.getHomeId();
             var level = $(parent).attr('data-level');
             var appliance = $(parent).attr("data-appliance");
+            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+            var url = dashboardURLAppliance+"?key="+key;
             // for smaller screens: close search bar
             closeSearch();
             // open level and open content for this space
             showLevel(level, function () {
-                openContent(homeId, level, appliance);
+                openContent(homeId, level, appliance, url);
             });
 
         });
@@ -682,13 +694,12 @@ $(function () {
     /**
      * Opens/Reveals a content item.
      */
-    function openContent(homeId, levelId, applianceId) {
-        var key = btoa("HomeID="+homeId+"&FloorLevel="+levelId+"&ApplianceId="+applianceId);
+    function openContent(homeId, levelId, applianceId, dashboardUrl) {
         $('div.content').html(contentHBTemplate({
             HomeId: homeId,
             FloorLevel: levelId,
             ApplianceId: applianceId,
-            DashboardURL: dashboardURL+"?key="+key
+            DashboardURL: dashboardUrl
         }));
 
         // if one already shown:

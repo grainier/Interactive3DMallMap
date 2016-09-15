@@ -280,7 +280,6 @@ $(function () {
                     var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
                     url = url+"?key="+key;
                     // open content for this pin
-                    alert(homeId + level + appliance + type);
                     openContent(homeId, level, appliance, url);
                     // remove hover class (showing the title)
                     $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');

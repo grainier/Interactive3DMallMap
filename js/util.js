@@ -4,8 +4,6 @@ function escapeForJQuery(id) {
 
 function resizeIframe(obj) {
     try {
-        alert(obj.contentWindow.document.body.scrollHeight);
-
         $(obj).css('height', function (obj) {
             return obj.contentWindow.document.body.scrollHeight;
         });

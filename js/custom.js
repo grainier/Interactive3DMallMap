@@ -169,12 +169,10 @@ $(function () {
         isExpanded,// check if all levels are shown or if one level is shown (expanded)
         spaceref, // reference to the current shows space (name set in the data-name attr of both the listed spaces and the pins on the map)
         contentHBTemplate = null, // handlebar template to render content
-        // dashboardURLAppliance = "http://localhost:63342/3d-mall-map/",
-        // dashboardURLFloorLevel = "http://localhost:63342/3d-mall-map/";
-        dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-analytics/appliances",
+        dashboardURLAppliance = "http://localhost:9763/portal/dashboards/home-appliance-analytics/",
         dashboardURLRoom = "http://localhost:9763/portal/dashboards/home-analytics/room",
         dashboardURLFloorLevel = "http://localhost:9763/portal/dashboards/home-analytics/floor";
-
+    
     /**
      * Initialize UI and bind events
      */
@@ -229,6 +227,24 @@ $(function () {
         });
     }
 
+    function getDashboardURL(applianceType, callback) {
+        var url = dashboardURLAppliance + applianceType;
+        try {
+            $.ajax({
+                cache: false,
+                url: url,
+                success: function () {
+                    callback(url)
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    callback(dashboardURLAppliance)
+                }
+            });
+        } catch (e) {
+            callback(dashboardURLAppliance)
+        }
+    }
+
 
     /**
      * Initialize/Bind events fn.
@@ -250,17 +266,26 @@ $(function () {
             var homeId = home.getHomeId();
             var level = $(this).attr("data-level");
             var appliance = $(this).attr("data-appliance");
+            var applianceType = $(this).attr("data-applianceType");
             var type = $(this).attr("data-type");
-            var key = (type === "room")
-                ? btoa("HomeID="+homeId+"&FloorLevel="+level+"&RoomName="+appliance)
-                : btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
-            var url = (type === "room")
-                ? dashboardURLRoom+"?key="+key
-                : dashboardURLAppliance+"?key="+key;
-            // open content for this pin
-            openContent(homeId, level, appliance, url);
-            // remove hover class (showing the title)
-            $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
+            if (type === "room") {
+                var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&RoomName="+appliance);
+                var url = dashboardURLRoom+"?key="+key;
+                // open content for this pin
+                openContent(homeId, level, appliance, url);
+                // remove hover class (showing the title)
+                $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
+            } else if (type === "appliance") {
+                getDashboardURL(applianceType, function (url) {
+                    var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+                    url = url+"?key="+key;
+                    // open content for this pin
+                    alert(homeId + level + appliance + type);
+                    openContent(homeId, level, appliance, url);
+                    // remove hover class (showing the title)
+                    $('.content__item[data-space="' + appliance + '"]').removeClass('content__item--hover');
+                });
+            }
         }).on("mouseenter", 'a.pin', function () {
             if (!isOpenContentArea) {
                 $('div.content').html(contentHBTemplate(
@@ -294,15 +319,17 @@ $(function () {
             var homeId = home.getHomeId();
             var level = $(parent).attr('data-level');
             var appliance = $(parent).attr("data-appliance");
-            var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
-            var url = dashboardURLAppliance+"?key="+key;
-            // for smaller screens: close search bar
-            closeSearch();
-            // open level and open content for this space
-            showLevel(level, function () {
-                openContent(homeId, level, appliance, url);
+            var applianceType = $(parent).attr("data-applianceType");
+            getDashboardURL(applianceType, function (url) {
+                var key = btoa("HomeID="+homeId+"&FloorLevel="+level+"&ApplianceId="+appliance);
+                url = url+"?key="+key;
+                // for smaller screens: close search bar
+                closeSearch();
+                // open level and open content for this space
+                showLevel(level, function () {
+                    openContent(homeId, level, appliance, url);
+                });
             });
-
         });
 
         $('.main').on("click", 'button.open-search', function () {
@@ -360,13 +387,13 @@ $(function () {
                 var k = j + 1,
                     type = $(this).attr("data-type"),
                     appliance = $(this).attr("id"),
-                    item = $(this).attr("data-item"),
+                    applianceType = $(this).attr("data-item"),
                     marker_enabled = false;
                 if (type !== undefined && type !== null) {
                     switch (type) {
                         case 'appliance':
                             $(this).addClass('map__hidden');
-                            marker_enabled = (item) ? true : false;
+                            marker_enabled = (applianceType) ? true : false;
                             break;
                         case 'room':
                             $(this).addClass('map__space');
@@ -389,13 +416,14 @@ $(function () {
                     }
                     if (marker_enabled) {
                         if (appliance !== undefined && appliance !== null && appliance.length > 0) {
-                            item = (item !== undefined && item !== null && item.length > 0) ? item : "default";
+                            applianceType = (applianceType !== undefined && applianceType !== null && applianceType.length > 0) ? applianceType : "default";
                             points.push({
                                 appliance: appliance,
                                 level: l,
                                 marker: k,
                                 type: type,
-                                icon: "img/icons/" + item + ".png"    // TODO
+                                applianceType: applianceType,
+                                icon: "img/icons/" + applianceType + ".png"    // TODO
                             });
                         }
                     }

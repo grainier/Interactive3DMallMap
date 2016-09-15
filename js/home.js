@@ -252,32 +252,38 @@ var Home = (function (homeJson) {
             {
                 FloorLevel:1,
                 WarningType:"alert",
-                ApplianceId:"basement:batteries"
+                ApplianceId:"basement:batteries",
+                ApplianceType:"battery"
             },
             {
                 FloorLevel:1,
                 WarningType:"warning",
-                ApplianceId:"basement:hrv"
+                ApplianceId:"basement:hrv",
+                ApplianceType:"hrv"
             },
             {
                 FloorLevel:2,
                 WarningType:"info",
-                ApplianceId:"livingroom:tv"
+                ApplianceId:"livingroom:tv",
+                ApplianceType:"tv"
             },
             {
                 FloorLevel:2,
                 WarningType:"warning",
-                ApplianceId:"livingroom:subwoofer"
+                ApplianceId:"livingroom:subwoofer",
+                ApplianceType:"subwoofer"
             },
             {
                 FloorLevel:2,
                 WarningType:"info",
-                ApplianceId:"livingroom:ac"
+                ApplianceId:"livingroom:ac",
+                ApplianceType:"ac"
             },
             {
                 FloorLevel:3,
                 WarningType:"alert",
-                ApplianceId:"master:ac"
+                ApplianceId:"master:ac",
+                ApplianceType:"ac"
             }
         ]
     }

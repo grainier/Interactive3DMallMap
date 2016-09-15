@@ -53,10 +53,14 @@ var Home = (function (homeJson) {
      *
      */
     function initAppliances() {
-        for (var i = 0; i < homeJson.floors.length; i++) {
-            parseAppliances(homeJson.floors[i].id, homeJson.floors[i].svg)
+        for (var i = 0, l; i < homeJson.floors.length; i++) {
+            l = i + 1;
+            parseAppliances(l, homeJson.floors[i].svg)
                 .forEach(function (appliance) {
-                    addAppliance(appliance);
+                    getIconURL(appliance.item, function (iconUrl) {
+                        appliance.icon = iconUrl;
+                        addAppliance(appliance);
+                    });
                 })
         }
     }
@@ -90,6 +94,26 @@ var Home = (function (homeJson) {
         return res
     }
 
+    function getIconURL(applianceType, callback) {
+        var defaultUrl = "img/icons/default.png";
+        var url = "img/icons/" + applianceType + ".png";
+        try {
+            $.ajax({
+                type: 'HEAD',
+                cache: false,
+                url: url,
+                success: function () {
+                    callback(url)
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    callback(defaultUrl)
+                }
+            });
+        } catch (e) {
+            callback(defaultUrl)
+        }
+    }
+
     function getHomeSpec() {
         return homeSpec
     }
@@ -97,6 +121,17 @@ var Home = (function (homeJson) {
     function getHomeId() {
         return homeId
     }
+
+    /**
+     * 
+     * @param floor
+     * @param applianceId
+     * @returns {*}
+     */
+    function getAppliance(floor, applianceId) {
+        return appliances[floor + ':' + applianceId];
+    }
+
 
     /**
      *
@@ -304,5 +339,6 @@ var Home = (function (homeJson) {
         getHomeSpec: getHomeSpec,
         getAlerts: getAlerts,
         getHomeId: getHomeId,
+        getAppliance: getAppliance,
     }
 });

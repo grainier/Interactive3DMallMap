@@ -231,6 +231,7 @@ $(function () {
         var url = dashboardURLAppliance + applianceType;
         try {
             $.ajax({
+                type: 'HEAD',
                 cache: false,
                 url: url,
                 success: function () {
@@ -417,13 +418,15 @@ $(function () {
                     if (marker_enabled) {
                         if (appliance !== undefined && appliance !== null && appliance.length > 0) {
                             applianceType = (applianceType !== undefined && applianceType !== null && applianceType.length > 0) ? applianceType : "default";
+                            var h = home.getAppliance(l,appliance),
+                                iconUrl = (h) ? h.icon : "img/icons/default.png";
                             points.push({
                                 appliance: appliance,
                                 level: l,
                                 marker: k,
                                 type: type,
                                 applianceType: applianceType,
-                                icon: "img/icons/" + applianceType + ".png"    // TODO
+                                icon: iconUrl
                             });
                         }
                     }

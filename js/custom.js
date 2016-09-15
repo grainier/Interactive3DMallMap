@@ -231,7 +231,7 @@ $(function () {
         var url = dashboardURLAppliance + applianceType;
         try {
             $.ajax({
-                type: 'HEAD',
+                type: 'GET',
                 cache: false,
                 url: url,
                 success: function () {

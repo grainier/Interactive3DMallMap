@@ -99,7 +99,7 @@ var Home = (function (homeJson) {
         var url = "img/icons/" + applianceType + ".png";
         try {
             $.ajax({
-                type: 'HEAD',
+                type: 'GET',
                 cache: false,
                 url: url,
                 success: function () {

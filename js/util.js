@@ -1,5 +1,20 @@
-function escapeForJQuery( id ) {
-    return id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+function escapeForJQuery(id) {
+    return id.replace(/(:|\.|\[|\]|,)/g, "\\$1");
+}
+
+function resizeIframe(obj) {
+    try {
+        alert(obj.contentWindow.document.body.scrollHeight);
+
+        $(obj).css('height', function (obj) {
+            return obj.contentWindow.document.body.scrollHeight;
+        });
+        $('.weather').css('height', function (obj) {
+            return obj.contentWindow.document.body.scrollHeight;
+        });
+        // obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    } catch (ignored) {
+    }
 }
 
 jQuery.fn.sortElements = (function () {

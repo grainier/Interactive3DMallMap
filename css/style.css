@@ -484,6 +484,11 @@ button:focus {
     outline: none;
 }
 
+.weather {
+    position: absolute;
+    bottom: 0;
+}
+
 .label {
     position: absolute;
     top: 4em;
